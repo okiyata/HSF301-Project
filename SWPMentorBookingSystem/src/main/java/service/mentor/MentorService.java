@@ -16,4 +16,6 @@ public interface MentorService {
 	Mentor findById(Integer mentorId);
 
 	List<Mentor> findAll();
+	
+	List<Mentor> getAvailableMentors();
 }

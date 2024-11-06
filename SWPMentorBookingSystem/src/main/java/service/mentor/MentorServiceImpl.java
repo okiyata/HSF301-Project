@@ -44,4 +44,9 @@ public class MentorServiceImpl implements MentorService{
 		return repo.findAll();
 	}
 
+	@Override
+	public List<Mentor> getAvailableMentors() {
+		return repo.getAvailableMentors();
+	}
+
 }

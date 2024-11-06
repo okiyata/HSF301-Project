@@ -16,4 +16,6 @@ public interface MentorRepository {
 	Mentor findById(Integer mentorId);
 
 	List<Mentor> findAll();
+	
+	List<Mentor> getAvailableMentors();
 }

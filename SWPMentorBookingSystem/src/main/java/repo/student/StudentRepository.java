@@ -16,4 +16,6 @@ public interface StudentRepository {
 	Student findById(Integer studentId);
 
 	List<Student> findAll();
+	
+	Student findByName(String studentName);
 }

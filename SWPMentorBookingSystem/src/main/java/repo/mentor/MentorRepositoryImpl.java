@@ -45,4 +45,9 @@ public class MentorRepositoryImpl implements MentorRepository {
 		return dao.findAll();
 	}
 
+	@Override
+	public List<Mentor> getAvailableMentors() {
+		return dao.getAvailableMentors();
+	}
+
 }

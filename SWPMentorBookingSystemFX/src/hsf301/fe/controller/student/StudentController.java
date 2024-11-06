@@ -10,7 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import pojo.ProjectGroup;
 import pojo.Student;
+import service.projectGroup.ProjectGroupService;
+import service.projectGroup.ProjectGroupServiceImpl;
 import service.student.StudentService;
 import service.student.StudentServiceImpl;
 
@@ -30,21 +33,29 @@ public class StudentController {
 	private Button selectedButton;
 
 	private StudentService studentService;
-    private CustomSession session;
+	private ProjectGroupService projectGroupService;
+	private CustomSession session;
 
-    public StudentController() {
-        studentService = new StudentServiceImpl();
-        session = CustomSession.getInstance();
-    }
-	
+	public StudentController() {
+		studentService = new StudentServiceImpl();
+		projectGroupService = new ProjectGroupServiceImpl();
+		session = CustomSession.getInstance();
+	}
+
 	@FXML
 	private void initialize() {
 		Student student = (Student) session.getProperties().get("user");
+
 		if (studentService.hasGroup(student.getStudentID())) {
+			ProjectGroup group = projectGroupService.findGroupByStudentId(student.getStudentID());
+
+			session.getProperties().put("currentGroup", group);
+
 			loadUI("GroupDetails");
 		} else {
 			loadUI("CreateOrSearchGroup");
 		}
+
 		selectedButton = groupButton;
 		setSelectedButton(groupButton);
 	}
@@ -53,18 +64,22 @@ public class StudentController {
 	public void handleLoadGroup(ActionEvent event) {
 		if (selectedButton != groupButton) {
 			Student student = (Student) session.getProperties().get("user");
-		    if (studentService.hasGroup(student.getStudentID())) {
-		        loadUI("GroupDetails");
-		    } else {
-		        loadUI("CreateOrSearchGroup");
-		    }
+			if (studentService.hasGroup(student.getStudentID())) {
+				ProjectGroup group = projectGroupService.findGroupByStudentId(student.getStudentID());
+				session.getProperties().put("currentGroup", group);
+				loadUI("GroupDetails");
+				setSelectedButton(groupButton);
+			} else {
+				loadUI("CreateOrSearchGroup");
+				setSelectedButton(groupButton);
+			}
 		}
 	}
 
 	@FXML
-	public void handleLoadGroupHistory(ActionEvent event) {
+	public void handleLoadBookingHistory(ActionEvent event) {
 		if (selectedButton != historyButton) {
-			loadUI("GroupHistory");
+			loadUI("BookingHistory");
 			setSelectedButton(historyButton);
 		}
 	}

@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import pojo.Appointment;
 
@@ -97,5 +98,23 @@ public class AppointmentDAO {
         }
 
         return list;
+    }
+    
+    public List<Appointment> getAppointmentsByGroupId(int groupId) {
+        Session session = sessionFactory.openSession();
+        List<Appointment> appointments = null;
+
+        try {
+            String hql = "FROM Appointment a WHERE a.projectGroup.groupID = :groupId";
+            Query<Appointment> query = session.createQuery(hql, Appointment.class);
+            query.setParameter("groupId", groupId);
+            appointments = query.getResultList();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return appointments;
     }
 }

@@ -52,7 +52,7 @@ public class Main {
 
             // Tạo Appointment giữa ProjectGroup và Mentor
             Appointment appointment = new Appointment(projectGroup, mentor, LocalDateTime.now().plusDays(1),
-                    "Spring Framework", "BOOKED");
+                    "Spring Framework", mentor.getBookingFee(), "BOOKED");
             session.save(appointment);
 
             // Tạo Rating cho Mentor và ProjectGroup

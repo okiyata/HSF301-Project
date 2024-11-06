@@ -9,16 +9,16 @@ import repo.projectGroup.ProjectGroupRepositoryImpl;
 import repo.student.StudentRepository;
 import repo.student.StudentRepositoryImpl;
 
-public class ProjectGroupServiceImpl implements ProjectGroupService{
-	
+public class ProjectGroupServiceImpl implements ProjectGroupService {
+
 	private ProjectGroupRepository projectGroupRepository;
 	private StudentRepository studentRepository;
-	
-	public ProjectGroupServiceImpl () {
+
+	public ProjectGroupServiceImpl() {
 		projectGroupRepository = new ProjectGroupRepositoryImpl();
 		studentRepository = new StudentRepositoryImpl();
 	}
-	
+
 	@Override
 	public ProjectGroup save(ProjectGroup projectGroup) {
 		return projectGroupRepository.save(projectGroup);
@@ -33,9 +33,9 @@ public class ProjectGroupServiceImpl implements ProjectGroupService{
 	public void delete(ProjectGroup projectGroup) {
 		projectGroupRepository.delete(projectGroup);
 	}
-	
+
 	@Override
-	public void deleteById (Integer projectGroupId) {
+	public void deleteById(Integer projectGroupId) {
 		projectGroupRepository.deleteById(projectGroupId);
 	}
 
@@ -56,18 +56,38 @@ public class ProjectGroupServiceImpl implements ProjectGroupService{
 
 	@Override
 	public ProjectGroup createGroup(String topic, String groupName, int studentID) {
-        Student student = studentRepository.findById(studentID);
-        if (student == null || student.getProjectGroup() != null) {
-            throw new IllegalArgumentException("Student không hợp lệ hoặc đã có nhóm.");
-        }
+		Student student = studentRepository.findById(studentID);
+		if (student == null || student.getProjectGroup() != null) {
+			throw new IllegalArgumentException("Student không hợp lệ hoặc đã có nhóm.");
+		}
 
-        ProjectGroup newGroup = new ProjectGroup(topic, groupName, "Not Started", 10);
-        projectGroupRepository.save(newGroup);
+		ProjectGroup newGroup = new ProjectGroup(topic, groupName, "Not Started", 10);
+		projectGroupRepository.save(newGroup);
 
-        student.setProjectGroup(newGroup);
-        studentRepository.update(student);
+		student.setProjectGroup(newGroup);
+		studentRepository.update(student);
 
-        return newGroup;
-    }
+		return newGroup;
+	}
+
+	@Override
+	public ProjectGroup findGroupByStudentId(int studentID) {
+		return projectGroupRepository.findGroupByStudentId(studentID);
+	}
+
+	@Override
+	public boolean addMemberToGroup(int groupID, int studentID) {
+		return projectGroupRepository.addMemberToGroup(groupID, studentID);
+	}
+
+	@Override
+	public int getMemberCount(int groupID) {
+		return projectGroupRepository.getMemberCount(groupID);
+	}
+
+	@Override
+	public List<Student> getMembers(int groupID) {
+		return projectGroupRepository.getMembers(groupID);
+	}
 
 }

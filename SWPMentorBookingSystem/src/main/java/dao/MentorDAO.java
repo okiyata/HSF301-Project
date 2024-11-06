@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import pojo.Mentor;
 
@@ -97,5 +98,23 @@ public class MentorDAO {
         }
         
         return list;
+    }
+    
+    public List<Mentor> getAvailableMentors() {
+        Session session = sessionFactory.openSession();
+        List<Mentor> mentors = null;
+
+        try {
+            String hql = "FROM Mentor m WHERE m.status = :status";
+            Query<Mentor> query = session.createQuery(hql, Mentor.class);
+            query.setParameter("status", "AVAILABLE");
+            mentors = query.getResultList();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return mentors;
     }
 }
