@@ -2,6 +2,7 @@ package repo.mentor;
 
 import java.util.List;
 
+import pojo.Appointment;
 import pojo.Mentor;
 
 public interface MentorRepository {
@@ -16,4 +17,6 @@ public interface MentorRepository {
 	Mentor findById(Integer mentorId);
 
 	List<Mentor> findAll();
+	
+	List<Appointment> findAppointmentsByMentorId(int mentorID);
 }

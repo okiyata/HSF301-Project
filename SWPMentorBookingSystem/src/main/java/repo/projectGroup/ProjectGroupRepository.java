@@ -18,4 +18,6 @@ public interface ProjectGroupRepository {
 	List<ProjectGroup> findAll();
 	
 	List<ProjectGroup> findByName(String name);
+	
+	String getGroupNameById(int groupID);
 }

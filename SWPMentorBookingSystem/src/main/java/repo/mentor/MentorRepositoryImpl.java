@@ -3,6 +3,7 @@ package repo.mentor;
 import java.util.List;
 
 import dao.MentorDAO;
+import pojo.Appointment;
 import pojo.Mentor;
 
 public class MentorRepositoryImpl implements MentorRepository {
@@ -43,6 +44,11 @@ public class MentorRepositoryImpl implements MentorRepository {
 	@Override
 	public List<Mentor> findAll() {
 		return dao.findAll();
+	}
+
+	@Override
+	public List<Appointment> findAppointmentsByMentorId(int mentorID) {
+		return dao.findAppointmentsByMentorId(mentorID);
 	}
 
 }
