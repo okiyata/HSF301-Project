@@ -7,9 +7,12 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import service.mentor.MentorService;
 import service.mentor.MentorServiceImpl;
@@ -28,31 +31,36 @@ public class MentorController {
     private Button historyButton;
     @FXML
     private Button logoutButton;
-
-    private Button selectedButton;
+	
+	  private Button selectedButton;
+	
+	  private Stage stage;
+	  private Scene scene;
+  
     private MentorService mentorService;
     private CustomSession session;
 
     public MentorController() {
         mentorService = new MentorServiceImpl();
     }
-
-    @FXML
-    private void initialize() {
-        loadUI("Appointments");
-        selectedButton = appointmentButton; 
-        setSelectedButton(appointmentButton); 
-    }
-
-    @FXML
-    public void handleLoadProfile(ActionEvent event) {
-        if (selectedButton != profileButton) {
+	
+	 @FXML
+	    private void initialize() {
+	        // Initialize the selected button to the profile button as the default tab
+	        selectedButton = profileButton;
+	        loadUI("Profile");
+	        setSelectedButton(profileButton);
+	    }
+	
+	@FXML
+	public void handleLoadProfile(ActionEvent event) {
+		if (selectedButton != profileButton) {
             loadUI("Profile");
             setSelectedButton(profileButton);
         }
-    }
-
-    @FXML
+	}
+	
+  @FXML
     public void handleAppointment(ActionEvent event) {
         if (selectedButton != appointmentButton) {
             loadUI("Appointments");
@@ -67,12 +75,17 @@ public class MentorController {
             setSelectedButton(historyButton);
         }
     }
-
-    @FXML
-    public void handleLogout(ActionEvent event) {
-        Platform.exit();
-    }
-
+	
+	@FXML
+	public void handleLogout(ActionEvent event) throws IOException {
+		 Parent loginScreen = FXMLLoader.load(getClass().getResource("/hsf301/fe/view/LoginUI.fxml"));
+	    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	    	scene = new Scene(loginScreen);
+	    	stage.setScene(scene);
+	    	stage.centerOnScreen();
+	    	stage.show();
+	}
+	
     private void loadUI(String uiName) {
         try {
             Parent screen = FXMLLoader.load(getClass().getResource("/hsf301/fe/view/mentor/" + uiName + ".fxml"));
@@ -82,8 +95,8 @@ public class MentorController {
             e.printStackTrace();
         }
     }
-
-    private void setSelectedButton(Button newButton) {
+	
+	private void setSelectedButton(Button newButton) {
         if (selectedButton != null) {
             selectedButton.setDisable(false);
         }
