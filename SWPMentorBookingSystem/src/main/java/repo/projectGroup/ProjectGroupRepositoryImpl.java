@@ -50,4 +50,10 @@ public class ProjectGroupRepositoryImpl implements ProjectGroupRepository {
 		return dao.findByName(name);
 	}
 
+	@Override
+	public String getGroupNameById(int groupID) {
+		// TODO Auto-generated method stub
+		return dao.getGroupNameById(groupID);
+	}
+
 }

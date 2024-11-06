@@ -97,10 +97,8 @@ public class StudentController {
 			// Enable the previously selected button
 			selectedButton.setDisable(false);
 		}
-
 		// Disable the new button and change its background color
 		newButton.setDisable(true);
-
 		// Update the reference to the selected button
 		selectedButton = newButton;
 	}
