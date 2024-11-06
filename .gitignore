@@ -5,3 +5,5 @@ workspace.xml
 *.classpath
 *.project
 *.settings/
+SWPMentorBookingSystemFX/.classpath
+/SWPMentorBookingSystemFX/bin
