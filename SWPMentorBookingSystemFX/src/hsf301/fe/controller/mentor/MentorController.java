@@ -2,6 +2,7 @@ package hsf301.fe.controller.mentor;
 
 import java.io.IOException;
 
+import hsf301.fe.controller.CustomSession;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,23 +14,35 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import service.mentor.MentorService;
+import service.mentor.MentorServiceImpl;
+import pojo.Mentor;
+import pojo.Student;
+
 public class MentorController {
-	@FXML
-	private StackPane contentPane;
-	
-	@FXML
+    @FXML
+    private StackPane contentPane;
+
+    @FXML
     private Button profileButton;
     @FXML
-    private Button bookingButton;
+    private Button appointmentButton;
     @FXML
-    private Button transactionsButton;
+    private Button historyButton;
     @FXML
     private Button logoutButton;
 	
-	private Button selectedButton;
+	  private Button selectedButton;
 	
-	private Stage stage;
-	private Scene scene;
+	  private Stage stage;
+	  private Scene scene;
+  
+    private MentorService mentorService;
+    private CustomSession session;
+
+    public MentorController() {
+        mentorService = new MentorServiceImpl();
+    }
 	
 	 @FXML
 	    private void initialize() {
@@ -47,21 +60,21 @@ public class MentorController {
         }
 	}
 	
-//	@FXML
-//	public void handleLoadBooking	(ActionEvent event) {
-//		if (selectedButton != bookingButton) {
-//            loadUI("Booking");
-//            setSelectedButton(bookingButton);
-//        }
-//	}
-//	
-//	@FXML
-//	public void handleTransactions(ActionEvent event) {
-//		if (selectedButton != transactionsButton) {
-//            loadUI("Transaction");
-//            setSelectedButton(transactionsButton);
-//        }
-//	}
+  @FXML
+    public void handleAppointment(ActionEvent event) {
+        if (selectedButton != appointmentButton) {
+            loadUI("Appointments");
+            setSelectedButton(appointmentButton);
+        }
+    }
+
+    @FXML
+    public void handleHistory(ActionEvent event) {
+        if (selectedButton != historyButton) {
+            loadUI("History");
+            setSelectedButton(historyButton);
+        }
+    }
 	
 	@FXML
 	public void handleLogout(ActionEvent event) throws IOException {
@@ -73,26 +86,21 @@ public class MentorController {
 	    	stage.show();
 	}
 	
-	private void loadUI (String uiName) {
-		try {
-			Parent screen = FXMLLoader.load(getClass().getResource("/hsf301/fe/view/mentor/"+uiName+".fxml"));
-			contentPane.getChildren().clear();
-	        contentPane.getChildren().add(screen);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
-	}
+    private void loadUI(String uiName) {
+        try {
+            Parent screen = FXMLLoader.load(getClass().getResource("/hsf301/fe/view/mentor/" + uiName + ".fxml"));
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(screen);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 	
 	private void setSelectedButton(Button newButton) {
         if (selectedButton != null) {
-            // Enable the previously selected button
             selectedButton.setDisable(false);
         }
-        
-        // Disable the new button and change its background color
         newButton.setDisable(true);
-        
-        // Update the reference to the selected button
         selectedButton = newButton;
     }
 }

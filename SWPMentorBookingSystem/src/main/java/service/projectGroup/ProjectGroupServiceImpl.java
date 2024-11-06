@@ -70,4 +70,9 @@ public class ProjectGroupServiceImpl implements ProjectGroupService{
         return newGroup;
     }
 
+	@Override
+	public String getGroupNameById(int groupID) {
+		return projectGroupRepository.getGroupNameById(groupID);
+	}
+
 }
