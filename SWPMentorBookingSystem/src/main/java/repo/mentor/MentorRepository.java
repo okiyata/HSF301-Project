@@ -19,4 +19,6 @@ public interface MentorRepository {
 	List<Mentor> findAll();
 	
 	List<Appointment> findAppointmentsByMentorId(int mentorID);
+	
+	List<Appointment> findHistoryByMentorId(int mentorID);
 }

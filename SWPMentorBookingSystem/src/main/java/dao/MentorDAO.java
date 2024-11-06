@@ -117,5 +117,24 @@ public class MentorDAO {
 
         return appointments;
     }
+    
+    public List<Appointment> findHistoryByMentorId(int mentorID) {
+        session = getSession();
+        List<Appointment> appointments = new LinkedList<>();
+
+        try {
+            String hql = "from Appointment where mentor.mentorID = :mentorID and status in (:statuses)";
+            appointments = session.createQuery(hql, Appointment.class)
+                                  .setParameter("mentorID", mentorID)
+                                  .setParameter("statuses", List.of("DENIED", "FINISHED"))
+                                  .getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            session.close();
+        }
+
+        return appointments;
+    }
 
 }

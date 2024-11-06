@@ -51,4 +51,9 @@ public class MentorRepositoryImpl implements MentorRepository {
 		return dao.findAppointmentsByMentorId(mentorID);
 	}
 
+	@Override
+	public List<Appointment> findHistoryByMentorId(int mentorID) {
+		return dao.findHistoryByMentorId(mentorID);
+	}
+
 }
