@@ -45,4 +45,9 @@ public class RatingRepositoryImpl implements RatingRepository {
 		return dao.findAll();
 	}
 
+	@Override
+	public List<Rating> findRatingsByType(String ratingType) {
+		return dao.findRatingsByType(ratingType);
+	}
+
 }

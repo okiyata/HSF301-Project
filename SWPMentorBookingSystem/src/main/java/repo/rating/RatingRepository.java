@@ -16,4 +16,6 @@ public interface RatingRepository {
 	Rating findById(Integer ratingId);
 
 	List<Rating> findAll();
+	
+	List<Rating> findRatingsByType(String ratingType);
 }
