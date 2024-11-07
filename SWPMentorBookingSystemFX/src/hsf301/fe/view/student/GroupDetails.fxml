@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -28,32 +29,33 @@
          </font>
       </Label>
       <TextField fx:id="txtWalletPoint" editable="false" layoutX="383.0" layoutY="422.0" prefHeight="26.0" prefWidth="61.0" />
-      <Button fx:id="btnAdd" layoutX="199.0" layoutY="189.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="33.0" prefWidth="74.0" styleClass="crud-button" text="Add">
+      <Button fx:id="btnAdd" layoutX="206.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="20.0" prefWidth="62.0" styleClass="crud-button" text="Add">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Label fx:id="txtConfirm" layoutX="36.0" layoutY="427.0" />
       <TextField fx:id="txtAdd" layoutX="19.0" layoutY="193.0" prefHeight="26.0" prefWidth="171.0" promptText="Thêm thành viên" />
-      <Label fx:id="txtGroupName" layoutX="34.0" layoutY="102.0" text="Group Name">
+      <Label fx:id="txtGroupName" layoutX="19.0" layoutY="87.0" text="Group Name">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="txtTopic" layoutX="34.0" layoutY="118.0" text="Topic">
+      <Label fx:id="txtTopic" layoutX="19.0" layoutY="103.0" text="Topic">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="141.0" text="Progress:">
+      <Label layoutX="19.0" layoutY="132.0" text="Progress:">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="txtProgress" layoutX="93.0" layoutY="141.0" text="Đang phát triển">
+      <ComboBox fx:id="cbProgress" layoutX="72.0" layoutY="127.0" prefWidth="150.0" />
+      <Button fx:id="btnUpdate" layoutX="235.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="27.0" prefWidth="69.0" styleClass="crud-button" text="Update">
          <font>
-            <Font name="Arial" size="12.0" />
+            <Font size="14.0" />
          </font>
-      </Label>
+      </Button>
 	</children>
 </AnchorPane>

@@ -35,7 +35,7 @@ public class Main {
             studentAccount2.setStudent(student2);
 
             // Tạo ProjectGroup và thêm thành viên
-            ProjectGroup projectGroup = new ProjectGroup("Jewelry Product", "FA24_LamNN15_Nhom1", "In Progress", 10);
+            ProjectGroup projectGroup = new ProjectGroup("Jewelry Product", "FA24_LamNN15_Nhom1", student, "In Progress", 10);
             projectGroup.addMember(student);
             student.setProjectGroup(projectGroup);
 

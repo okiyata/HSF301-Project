@@ -18,8 +18,6 @@ import service.mentor.MentorService;
 import service.mentor.MentorServiceImpl;
 import service.projectGroup.ProjectGroupService;
 import service.projectGroup.ProjectGroupServiceImpl;
-import service.student.StudentService;
-import service.student.StudentServiceImpl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -38,6 +36,8 @@ public class BookingController {
     private TableColumn<Mentor, String> nameColumn;
     @FXML
     private TableColumn<Mentor, String> skillsColumn;
+    @FXML
+    private TableColumn<Mentor, String> availabilityColumn;
     @FXML
     private TableColumn<Mentor, Integer> feeColumn;
     @FXML
@@ -69,6 +69,7 @@ public class BookingController {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("mentorID"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("mentorName"));
         skillsColumn.setCellValueFactory(new PropertyValueFactory<>("skills"));
+        availabilityColumn.setCellValueFactory(new PropertyValueFactory<>("availability"));
         feeColumn.setCellValueFactory(new PropertyValueFactory<>("bookingFee"));
 
         loadAvailableMentors();
