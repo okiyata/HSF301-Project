@@ -52,12 +52,12 @@ public class Main {
 
             // Tạo Appointment giữa ProjectGroup và Mentor
             Appointment appointment = new Appointment(projectGroup, mentor, LocalDateTime.now().plusDays(1),
-                    "Spring Framework", mentor.getBookingFee(), "BOOKED");
+                    "Spring Framework", mentor.getBookingFee(), "FINISHED");
             session.save(appointment);
 
             // Tạo Rating cho Mentor và ProjectGroup
-            Rating mentorRating = new Rating(5, "Great mentor!", "MENTOR", mentor, null);
-            Rating groupRating = new Rating(4, "Good project progress", "GROUP", null, projectGroup);
+            Rating mentorRating = new Rating(5, "Great mentor!", "MENTOR", appointment);
+            Rating groupRating = new Rating(4, "Good project progress", "GROUP",appointment);
             session.save(mentorRating);
             session.save(groupRating);
 
@@ -69,7 +69,6 @@ public class Main {
             session.save(mentorNotification);
             session.save(groupNotification);
 
-            // Commit transaction để lưu các đối tượng vào cơ sở dữ liệu
             transaction.commit();
             System.out.println("Data saved successfully!");
 

@@ -44,4 +44,9 @@ public class RatingServiceImpl implements RatingService{
 		return repo.findAll();
 	}
 
+	@Override
+	public List<Rating> findRatingsByType(String ratingType) {
+		return repo.findRatingsByType(ratingType);
+	}
+
 }
