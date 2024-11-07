@@ -4,37 +4,33 @@ import javax.persistence.*;
 
 @Entity
 public class Rating {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ratingID;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int ratingID;
 
-    @Column(nullable = false)
-    private int rating;
+	@Column(nullable = false)
+	private int rating;
 
-    @Column(nullable = true)
-    private String feedback;
+	@Column(nullable = true)
+	private String feedback;
 
-    @Column(nullable = false)
-    private String ratingType; // "MENTOR" hoặc "GROUP" để phân biệt loại đánh giá
+	@Column(nullable = false)
+	private String ratingType; // "MENTOR" hoặc "GROUP"
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "mentorID")
-    private Mentor mentor;
+	@ManyToOne
+	@JoinColumn(name = "appointment_id", nullable = false)
+	private Appointment appointment;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "groupID")
-    private ProjectGroup projectGroup;
+	public Rating() {
+	}
 
-    public Rating() {
-    }
-
-    public Rating(int rating, String feedback, String ratingType, Mentor mentor, ProjectGroup projectGroup) {
-        this.rating = rating;
-        this.feedback = feedback;
-        this.ratingType = ratingType;
-        this.mentor = mentor;
-        this.projectGroup = projectGroup;
-    }
+	public Rating(int rating, String feedback, String ratingType, Appointment appointment) {
+		super();
+		this.rating = rating;
+		this.feedback = feedback;
+		this.ratingType = ratingType;
+		this.appointment = appointment;
+	}
 
 	public int getRatingID() {
 		return ratingID;
@@ -68,20 +64,12 @@ public class Rating {
 		this.ratingType = ratingType;
 	}
 
-	public Mentor getMentor() {
-		return mentor;
+	public Appointment getAppointment() {
+		return appointment;
 	}
 
-	public void setMentor(Mentor mentor) {
-		this.mentor = mentor;
-	}
-
-	public ProjectGroup getProjectGroup() {
-		return projectGroup;
-	}
-
-	public void setProjectGroup(ProjectGroup projectGroup) {
-		this.projectGroup = projectGroup;
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
 	}
 
 	@Override
@@ -89,6 +77,5 @@ public class Rating {
 		return "Rating [ratingID=" + ratingID + ", rating=" + rating + ", feedback=" + feedback + ", ratingType="
 				+ ratingType + "]";
 	}
-	
 
 }
