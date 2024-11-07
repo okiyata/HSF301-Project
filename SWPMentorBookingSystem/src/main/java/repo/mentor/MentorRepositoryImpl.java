@@ -49,6 +49,7 @@ public class MentorRepositoryImpl implements MentorRepository {
 	@Override
 	public List<Mentor> getAvailableMentors() {
 		return dao.getAvailableMentors();
+	}
   
   @Override
 	public List<Appointment> findAppointmentsByMentorId(int mentorID) {

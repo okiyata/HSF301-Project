@@ -2,14 +2,18 @@ package hsf301.fe.controller.student;
 
 import java.io.IOException;
 
+import hsf301.fe.controller.AlertController;
 import hsf301.fe.controller.CustomSession;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import pojo.ProjectGroup;
 import pojo.Student;
 import service.projectGroup.ProjectGroupService;
@@ -87,14 +91,33 @@ public class StudentController {
 	@FXML
 	public void handleLoadBooking(ActionEvent event) {
 		if (selectedButton != bookingButton) {
-			loadUI("Booking");
-			setSelectedButton(bookingButton);
-		}
+	        Student student = (Student) session.getProperties().get("user");
+	        ProjectGroup currentGroup = (ProjectGroup) session.getProperties().get("currentGroup");
+
+	        if (currentGroup.getLeader() == null || currentGroup.getLeader().getStudentID() != student.getStudentID()) {
+	            AlertController.showAlert(AlertType.WARNING, "Access Denied", "Only the group leader can access the booking page.");
+	            return;
+	        }
+
+	        loadUI("Booking");
+	        setSelectedButton(bookingButton);
+	    }
 	}
 
 	@FXML
 	public void handleLogout(ActionEvent event) {
-		Platform.exit();
+		try {
+	        session.getProperties().clear();
+
+	        Parent loginScreen = FXMLLoader.load(getClass().getResource("/hsf301/fe/view/LoginUI.fxml"));
+	    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	    	Scene scene = new Scene(loginScreen);
+	    	stage.setScene(scene);
+	    	stage.centerOnScreen();
+	    	stage.show();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	private void loadUI(String uiName) {

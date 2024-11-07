@@ -61,7 +61,7 @@ public class ProjectGroupServiceImpl implements ProjectGroupService {
 			throw new IllegalArgumentException("Student không hợp lệ hoặc đã có nhóm.");
 		}
 
-		ProjectGroup newGroup = new ProjectGroup(topic, groupName, "Not Started", 10);
+		ProjectGroup newGroup = new ProjectGroup(topic, groupName, student,"Not Started", 10);
 		projectGroupRepository.save(newGroup);
 
 		student.setProjectGroup(newGroup);

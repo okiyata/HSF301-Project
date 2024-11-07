@@ -112,8 +112,8 @@ public class MentorDAO {
             mentors = query.getResultList();
         } catch (Exception ex) {
             ex.printStackTrace();
-             return mentors;
         }
+        return mentors;
     }
   
     public List<Appointment> findAppointmentsByMentorId(int mentorID) {
@@ -124,7 +124,7 @@ public class MentorDAO {
             String hql = "from Appointment where mentor.mentorID = :mentorID and status in (:statuses)";
             appointments = session.createQuery(hql, Appointment.class)
                                   .setParameter("mentorID", mentorID)
-                                  .setParameter("statuses", List.of("AWAIT_APPROVED", "APPROVED"))
+                                  .setParameter("statuses", List.of("AWAIT_APPROVAL", "APPROVED"))
                                   .getResultList();
         } catch (Exception ex) {
             System.out.println(ex);

@@ -50,7 +50,7 @@ public class LoginController {
         Account acc = accountService.authenticate(username, password); 
         
         if (acc == null) {
-        	AlertController.showAlert(Alert.AlertType.ERROR, "Login Failed!", "Account with email "+username+"does not exist!");
+        	AlertController.showAlert(Alert.AlertType.ERROR, "Login Failed!", "Wrong usernamme or password!");
         } else {
         	System.err.println("account khong null nee");
         	handleAuthorizedPage(acc, event);
