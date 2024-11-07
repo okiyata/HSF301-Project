@@ -1,6 +1,9 @@
 package pojo;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -29,6 +32,9 @@ public class Appointment {
 	@Column(nullable = false)
 	private String status; // AWAIT_APPROVAL, APPROVE, DENIED, FINISHED
 
+	@OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Rating> ratings = new ArrayList<>();
+	
 	public Appointment() {
 		super();
 	}

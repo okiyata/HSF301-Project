@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import pojo.Rating;
 
@@ -97,5 +98,29 @@ public class RatingDAO {
         }
 
         return list;
+    }
+    
+    public List<Rating> findRatingsByType(String ratingType) {
+        List<Rating> ratings = null;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            String hql = "FROM Rating r WHERE r.type = :ratingType";
+            Query<Rating> query = session.createQuery(hql, Rating.class);
+            query.setParameter("ratingType", ratingType);
+
+            ratings = query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return ratings;
     }
 }
