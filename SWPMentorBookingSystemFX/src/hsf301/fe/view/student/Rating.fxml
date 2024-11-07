@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="475.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.student.RatingController">
+	<children>
+		<Text fill="#0598ff" layoutX="196.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Rating">
+			<font>
+				<Font name="System Bold" size="25.0" />
+			</font>
+		</Text>
+      <Button fx:id="btnSend" layoutX="200.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleSend" prefHeight="33.0" prefWidth="74.0" styleClass="crud-button" text="Send">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtRating" layoutX="102.0" layoutY="321.0" prefHeight="26.0" prefWidth="48.0" promptText="1 - 5" />
+      <Label layoutX="26.0" layoutY="326.0" prefHeight="15.0" prefWidth="48.0" text="Rating:" />
+      <Label layoutX="26.0" layoutY="360.0" prefHeight="15.0" prefWidth="74.0" text="Feedback:" />
+      <TableView fx:id="appointmentTable" layoutX="10.0" layoutY="113.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="190.0" prefWidth="455.0">
+         <columns>
+            <TableColumn fx:id="IDColumn" prefWidth="40.79998588562012" text="ID" />
+            <TableColumn fx:id="dateColumn" prefWidth="120.79999542236328" text="Date" />
+            <TableColumn fx:id="mentorNameColumn" prefWidth="133.60003662109375" text="Mentor Name" />
+            <TableColumn fx:id="groupNameColumn" prefWidth="160.0" text="Group Name" />
+         </columns>
+      </TableView>
+      <TextArea fx:id="txtFeedback" layoutX="102.0" layoutY="360.0" prefHeight="54.0" prefWidth="142.0" />
+	</children>
+</AnchorPane>

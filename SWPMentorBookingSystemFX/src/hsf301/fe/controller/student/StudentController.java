@@ -32,6 +32,8 @@ public class StudentController {
 	@FXML
 	private Button bookingButton;
 	@FXML
+	private Button ratingButton;
+	@FXML
 	private Button logoutButton;
 
 	private Button selectedButton;
@@ -101,6 +103,22 @@ public class StudentController {
 
 	        loadUI("Booking");
 	        setSelectedButton(bookingButton);
+	    }
+	}
+	
+	@FXML
+	public void handleLoadRating(ActionEvent event) {
+		if (selectedButton != ratingButton) {
+	        Student student = (Student) session.getProperties().get("user");
+	        ProjectGroup currentGroup = (ProjectGroup) session.getProperties().get("currentGroup");
+
+	        if (currentGroup.getLeader() == null || currentGroup.getLeader().getStudentID() != student.getStudentID()) {
+	            AlertController.showAlert(AlertType.WARNING, "Access Denied", "Only the group leader can access the booking page.");
+	            return;
+	        }
+
+	        loadUI("Rating");
+	        setSelectedButton(ratingButton);
 	    }
 	}
 

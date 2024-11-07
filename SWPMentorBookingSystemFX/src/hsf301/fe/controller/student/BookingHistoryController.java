@@ -1,9 +1,13 @@
 package hsf301.fe.controller.student;
 
+import hsf301.fe.controller.AlertController;
 import hsf301.fe.controller.CustomSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -32,7 +36,7 @@ public class BookingHistoryController {
     @FXML
     private TableColumn<Appointment, String> statusColumn;
     @FXML
-    private Label txtConfirm;
+    private Button btnCancel;
 
     private AppointmentService appointmentService;
     private CustomSession session;
@@ -56,6 +60,12 @@ public class BookingHistoryController {
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         
         loadAppointmentTable();
+        
+        appointmentTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                btnCancel.setDisable(!"AWAIT_APPROVAL".equals(newSelection.getStatus()));
+            }
+        });
     }
 
     private void loadAppointmentTable() {
@@ -65,5 +75,26 @@ public class BookingHistoryController {
         List<Appointment> appointments = appointmentService.getAppointmentsByGroupId(groupId);
         ObservableList<Appointment> appointmentList = FXCollections.observableArrayList(appointments);
         appointmentTable.setItems(appointmentList);
+    }
+    
+    @FXML
+    private void handleCancel(ActionEvent event) {
+        Appointment selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();
+
+        if (selectedAppointment == null) {
+            AlertController.showAlert(AlertType.WARNING, "No Selection", "Please select an appointment to cancel.");
+            return;
+        }
+
+        if (!"AWAIT_APPROVAL".equals(selectedAppointment.getStatus())) {
+            AlertController.showAlert(AlertType.WARNING, "Cannot Cancel", "Only appointments with status 'AWAIT_APPROVAL' can be canceled.");
+            return;
+        }
+
+        selectedAppointment.setStatus("CANCELED");
+        appointmentService.update(selectedAppointment);
+        
+        AlertController.showAlert(AlertType.INFORMATION, "Canceled", "Appointment has been successfully canceled.");
+        loadAppointmentTable();
     }
 }

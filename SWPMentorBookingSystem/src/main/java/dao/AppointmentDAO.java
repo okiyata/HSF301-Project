@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -117,4 +118,56 @@ public class AppointmentDAO {
 
         return appointments;
     }
+    
+    public List<Appointment> findFinishedAppointmentsWithoutGroupRating(int groupId) {
+    	Session session = sessionFactory.openSession();
+        List<Appointment> appointments = new ArrayList<>();
+
+        try {
+            String sql = "SELECT a.* " +
+                         "FROM Appointment a " +
+                         "LEFT JOIN Rating r ON a.appointmentID = r.appointment_id AND r.ratingType = 'GROUP' " +
+                         "WHERE a.status = 'FINISHED' " +
+                         "AND a.projectGroupID = :groupId " +
+                         "AND r.ratingID IS NULL";
+
+            Query<Appointment> query = session.createNativeQuery(sql, Appointment.class);
+            query.setParameter("groupId", groupId);
+
+            appointments = query.getResultList();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return appointments;
+    }
+    
+    public List<Appointment> findFinishedAppointmentsWithoutMentorRating(int mentorId) {
+        Session session = sessionFactory.openSession();
+        List<Appointment> appointments = new ArrayList<>();
+
+        try {
+            String sql = "SELECT a.* " +
+                         "FROM Appointment a " +
+                         "LEFT JOIN Rating r ON a.appointmentID = r.appointment_id AND r.ratingType = 'MENTOR' " +
+                         "WHERE a.status = 'FINISHED' " +
+                         "AND a.mentorID = :mentorId " +
+                         "AND r.ratingID IS NULL";
+
+            Query<Appointment> query = session.createNativeQuery(sql, Appointment.class);
+            query.setParameter("mentorId", mentorId);
+
+            appointments = query.getResultList();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return appointments;
+    }
+
+
 }

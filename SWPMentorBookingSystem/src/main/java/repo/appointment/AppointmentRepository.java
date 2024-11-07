@@ -18,4 +18,8 @@ public interface AppointmentRepository {
 	List<Appointment> findAll();
 	
 	List<Appointment> getAppointmentsByGroupId(int groupId);
+	
+	List<Appointment> findFinishedAppointmentsWithoutGroupRating(int groupId);
+	
+	List<Appointment> findFinishedAppointmentsWithoutMentorRating(int mentorId);
 }
