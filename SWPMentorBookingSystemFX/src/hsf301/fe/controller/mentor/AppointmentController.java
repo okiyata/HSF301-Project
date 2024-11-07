@@ -16,10 +16,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Appointment;
 import pojo.Mentor;
+import pojo.ProjectGroup;
 import service.appointment.AppointmentService;
 import service.appointment.AppointmentServiceImpl;
 import service.mentor.MentorService;
 import service.mentor.MentorServiceImpl;
+import service.projectGroup.ProjectGroupService;
+import service.projectGroup.ProjectGroupServiceImpl;
 
 public class AppointmentController {
 	@FXML
@@ -47,12 +50,14 @@ public class AppointmentController {
 	private CustomSession session;
 	private MentorService mentorService;
 	private AppointmentService appointmentService;
+	private ProjectGroupService projectGroupService;
 
 	Mentor mentor = null;
 	
 	public AppointmentController() {
 		this.mentorService = new MentorServiceImpl();
 		this.appointmentService = new AppointmentServiceImpl();
+		this.projectGroupService = new ProjectGroupServiceImpl();
 		session = CustomSession.getInstance();
 	}
 
@@ -123,6 +128,12 @@ public class AppointmentController {
 			Appointment selectedAppointment = groupTable.getSelectionModel().getSelectedItem();
 			if (selectedAppointment.getStatus().equals("APPROVED")) {
 				selectedAppointment.setStatus("FINISHED");
+				ProjectGroup projectGroup = selectedAppointment.getProjectGroup();
+				projectGroup.setWalletPoints(projectGroup.getWalletPoints()-selectedAppointment.getFee());
+				projectGroupService.update(projectGroup);
+				
+				
+				
 				appointmentService.update(selectedAppointment);
 				AlertController.showAlert(Alert.AlertType.CONFIRMATION, "FINISHED successful!", "Finished appointment with id " + selectedAppointment.getAppointmentID());
 			} else {
