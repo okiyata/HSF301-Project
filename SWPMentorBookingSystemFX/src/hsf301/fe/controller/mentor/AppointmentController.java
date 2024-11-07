@@ -41,7 +41,7 @@ public class AppointmentController {
 	private TableColumn<Appointment, Integer> fee;
 
 	@FXML
-	private Button btnApproved;
+	private Button btnAproved;
 	@FXML
 	private Button btnDenied;
 	@FXML
@@ -82,6 +82,14 @@ public class AppointmentController {
 	            btnFinished.setDisable(!"APPROVED".equals(status));
 	        } else {
 	            btnFinished.setDisable(true);
+	        }
+	    });
+		groupTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+	        if (newSelection != null) {
+	            String status = newSelection.getStatus();
+	            btnAproved.setDisable("APPROVED".equals(status));
+	        } else {
+	        	btnAproved.setDisable(true);
 	        }
 	    });
 
