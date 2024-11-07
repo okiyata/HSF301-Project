@@ -49,6 +49,15 @@ public class ProjectGroup {
 		this.walletPoints = walletPoints;
 	}
 
+	
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+
 	public int getGroupID() {
 		return groupID;
 	}

@@ -27,4 +27,7 @@ public interface ProjectGroupRepository {
 	int getMemberCount(int groupID);
 	
 	List<Student> getMembers(int groupID);
+
+	String getGroupNameById(int groupID);
+
 }

@@ -21,6 +21,8 @@ public interface ProjectGroupService {
 	List<ProjectGroup> findByName(String name);
 
 	ProjectGroup createGroup(String topic, String groupName, int studentID);
+	
+	String getGroupNameById(int groupID);
 
 	ProjectGroup findGroupByStudentId(int studentID);
 

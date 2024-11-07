@@ -201,4 +201,21 @@ public class ProjectGroupDAO {
 
         return members;
     }
+    public String getGroupNameById(int groupID) {
+        Session session = sessionFactory.openSession();
+        String groupName = null;
+
+        try {
+            String hql = "SELECT g.groupName FROM ProjectGroup g WHERE g.groupID = :groupID";
+            groupName = session.createQuery(hql, String.class)
+                               .setParameter("groupID", groupID)
+                               .uniqueResult();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return groupName != null ? groupName : "Unknown Group";
+    }
 }

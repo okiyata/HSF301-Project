@@ -69,6 +69,10 @@ public class ProjectGroupRepositoryImpl implements ProjectGroupRepository {
 	@Override
 	public List<Student> getMembers(int groupID) {
 		return dao.getMembers(groupID);
+    
+  @Override
+	public String getGroupNameById(int groupID) {
+		return dao.getGroupNameById(groupID);
 	}
 
 }

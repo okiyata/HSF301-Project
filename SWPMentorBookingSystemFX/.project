@@ -3,6 +3,7 @@
 	<name>SWPMentorBookingSystemFX</name>
 	<comment></comment>
 	<projects>
+		<project>SWPMentorBookingSystem</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -2,6 +2,7 @@ package service.mentor;
 
 import java.util.List;
 
+import pojo.Appointment;
 import pojo.Mentor;
 import repo.mentor.MentorRepository;
 import repo.mentor.MentorRepositoryImpl;
@@ -47,6 +48,15 @@ public class MentorServiceImpl implements MentorService{
 	@Override
 	public List<Mentor> getAvailableMentors() {
 		return repo.getAvailableMentors();
+  }
+  
+  @Override
+	public List<Appointment> findAppointmentsByMentorId(int mentorID) {
+		return repo.findAppointmentsByMentorId(mentorID);
 	}
 
+	@Override
+	public List<Appointment> findHistoryByMentorId(int mentorID) {
+		return repo.findHistoryByMentorId(mentorID);
+	}
 }
