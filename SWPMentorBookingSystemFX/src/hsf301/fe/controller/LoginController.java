@@ -81,6 +81,11 @@ public class LoginController {
 	            	session.getProperties().put("user", mentorService.findById(acc.getMentor().getMentorID()));
 	    			sceneController.directToMentor(event);
 	    			break;
+	    		case "ADMIN":
+	    			System.err.println("account admin");
+	            	session.getProperties().put("user", accountService.findById(acc.getAccountID()));
+	    			sceneController.directToAdmin(event);;
+	    			break;
 				default:
 					AlertController.showAlert(Alert.AlertType.ERROR, "Internal Error", "Something is wrong in the server");
 					break;

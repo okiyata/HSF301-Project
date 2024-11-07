@@ -31,4 +31,13 @@ public class SceneController {
     	stage.centerOnScreen();
     	stage.show();
     }
+    
+    public void directToAdmin(ActionEvent event) throws IOException {
+    	Parent root = FXMLLoader.load(getClass().getResource("/hsf301/fe/view/admin/AdminUI.fxml"));
+    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.centerOnScreen();
+    	stage.show();
+    }
 }
