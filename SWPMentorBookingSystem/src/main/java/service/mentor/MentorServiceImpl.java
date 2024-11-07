@@ -46,6 +46,11 @@ public class MentorServiceImpl implements MentorService{
 	}
 
 	@Override
+	public List<Mentor> getAvailableMentors() {
+		return repo.getAvailableMentors();
+  }
+  
+  @Override
 	public List<Appointment> findAppointmentsByMentorId(int mentorID) {
 		return repo.findAppointmentsByMentorId(mentorID);
 	}
@@ -54,5 +59,4 @@ public class MentorServiceImpl implements MentorService{
 	public List<Appointment> findHistoryByMentorId(int mentorID) {
 		return repo.findHistoryByMentorId(mentorID);
 	}
-
 }

@@ -12,13 +12,17 @@ public class ProjectGroup {
 
 	@Column(nullable = false)
 	private String groupName;
-	
+
 	@Column(nullable = false)
 	private String topic;
 
-	@OneToMany(mappedBy = "projectGroup", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "projectGroup", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Student> members = new ArrayList<>();
 
+	@OneToOne
+    @JoinColumn(name = "leader_id")
+    private Student leader;
+	
 	@Column(nullable = false)
 	private String progress;
 
@@ -32,29 +36,12 @@ public class ProjectGroup {
 		super();
 	}
 
-	public ProjectGroup(String topic, String groupName, List<Student> members, String progress, int walletPoints, List<Appointment> appointments) {
+	public ProjectGroup(String topic, String groupName, Student leader, String progress, int walletPoints) {
 		this.topic = topic;
 		this.groupName = groupName;
-		this.members = members;
-		this.progress = progress;
-		this.groupName = groupName;
-		this.appointments = appointments;
-	}
-
-	public ProjectGroup(String topic, String groupName, String progress, int walletPoints) {
-		this.topic = topic;
-		this.groupName = groupName;
+		this.leader = leader;
 		this.progress = progress;
 		this.walletPoints = walletPoints;
-	}
-
-	
-	public String getGroupName() {
-		return groupName;
-	}
-
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
 	}
 
 	public int getGroupID() {
@@ -115,10 +102,26 @@ public class ProjectGroup {
 		this.appointments.add(appointment);
 	}
 
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+
+	public Student getLeader() {
+        return leader;
+    }
+
+    public void setLeader(Student leader) {
+        this.leader = leader;
+    }
+	
 	@Override
 	public String toString() {
-		return "ProjectGroup [groupID=" + groupID + ", topic=" + topic + ", progress=" + progress + ", walletPoints="
-				+ walletPoints + "]";
+		return "ProjectGroup [groupID=" + groupID + ", groupName=" + groupName + ", topic=" + topic + ", progress="
+				+ progress + ", walletPoints=" + walletPoints + "]";
 	}
 
 }

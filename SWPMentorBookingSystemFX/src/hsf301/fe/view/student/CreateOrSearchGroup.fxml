@@ -56,7 +56,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="txtConfirm" layoutX="106.0" layoutY="310.0" />
+      <Label fx:id="txtConfirm" layoutX="106.0" layoutY="310.0" textFill="RED" />
       <TextField fx:id="txtGroupName" layoutX="33.0" layoutY="416.0" prefHeight="26.0" prefWidth="171.0" promptText="Nhập Group Name" />
 	</children>
 </AnchorPane>

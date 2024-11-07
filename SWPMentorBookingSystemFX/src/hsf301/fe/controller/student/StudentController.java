@@ -2,15 +2,22 @@ package hsf301.fe.controller.student;
 
 import java.io.IOException;
 
+import hsf301.fe.controller.AlertController;
 import hsf301.fe.controller.CustomSession;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import pojo.ProjectGroup;
 import pojo.Student;
+import service.projectGroup.ProjectGroupService;
+import service.projectGroup.ProjectGroupServiceImpl;
 import service.student.StudentService;
 import service.student.StudentServiceImpl;
 
@@ -30,21 +37,29 @@ public class StudentController {
 	private Button selectedButton;
 
 	private StudentService studentService;
-    private CustomSession session;
+	private ProjectGroupService projectGroupService;
+	private CustomSession session;
 
-    public StudentController() {
-        studentService = new StudentServiceImpl();
-        session = CustomSession.getInstance();
-    }
-	
+	public StudentController() {
+		studentService = new StudentServiceImpl();
+		projectGroupService = new ProjectGroupServiceImpl();
+		session = CustomSession.getInstance();
+	}
+
 	@FXML
 	private void initialize() {
 		Student student = (Student) session.getProperties().get("user");
+
 		if (studentService.hasGroup(student.getStudentID())) {
+			ProjectGroup group = projectGroupService.findGroupByStudentId(student.getStudentID());
+
+			session.getProperties().put("currentGroup", group);
+
 			loadUI("GroupDetails");
 		} else {
 			loadUI("CreateOrSearchGroup");
 		}
+
 		selectedButton = groupButton;
 		setSelectedButton(groupButton);
 	}
@@ -53,18 +68,22 @@ public class StudentController {
 	public void handleLoadGroup(ActionEvent event) {
 		if (selectedButton != groupButton) {
 			Student student = (Student) session.getProperties().get("user");
-		    if (studentService.hasGroup(student.getStudentID())) {
-		        loadUI("GroupDetails");
-		    } else {
-		        loadUI("CreateOrSearchGroup");
-		    }
+			if (studentService.hasGroup(student.getStudentID())) {
+				ProjectGroup group = projectGroupService.findGroupByStudentId(student.getStudentID());
+				session.getProperties().put("currentGroup", group);
+				loadUI("GroupDetails");
+				setSelectedButton(groupButton);
+			} else {
+				loadUI("CreateOrSearchGroup");
+				setSelectedButton(groupButton);
+			}
 		}
 	}
 
 	@FXML
-	public void handleLoadGroupHistory(ActionEvent event) {
+	public void handleLoadBookingHistory(ActionEvent event) {
 		if (selectedButton != historyButton) {
-			loadUI("GroupHistory");
+			loadUI("BookingHistory");
 			setSelectedButton(historyButton);
 		}
 	}
@@ -72,14 +91,33 @@ public class StudentController {
 	@FXML
 	public void handleLoadBooking(ActionEvent event) {
 		if (selectedButton != bookingButton) {
-			loadUI("Booking");
-			setSelectedButton(bookingButton);
-		}
+	        Student student = (Student) session.getProperties().get("user");
+	        ProjectGroup currentGroup = (ProjectGroup) session.getProperties().get("currentGroup");
+
+	        if (currentGroup.getLeader() == null || currentGroup.getLeader().getStudentID() != student.getStudentID()) {
+	            AlertController.showAlert(AlertType.WARNING, "Access Denied", "Only the group leader can access the booking page.");
+	            return;
+	        }
+
+	        loadUI("Booking");
+	        setSelectedButton(bookingButton);
+	    }
 	}
 
 	@FXML
 	public void handleLogout(ActionEvent event) {
-		Platform.exit();
+		try {
+	        session.getProperties().clear();
+
+	        Parent loginScreen = FXMLLoader.load(getClass().getResource("/hsf301/fe/view/LoginUI.fxml"));
+	    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	    	Scene scene = new Scene(loginScreen);
+	    	stage.setScene(scene);
+	    	stage.centerOnScreen();
+	    	stage.show();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	private void loadUI(String uiName) {

@@ -5,54 +5,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="475.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.mentor.MentorProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.mentor.MentorProfileController">
 	<children>
-		<Text fill="#0598ff" layoutX="201.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Mentor profile">
+		<Text fill="#0598ff" layoutX="214.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Mentor profile">
 			<font>
 				<Font name="System Bold" size="25.0" />
 			</font>
 		</Text>
+      <TextField fx:id="txtMentorBookingFee" layoutX="396.0" layoutY="214.0" />
+      <Label layoutX="320.0" layoutY="218.0" text="Booking fee:" />
+      <Label layoutX="55.0" layoutY="281.0" text="Skills:" />
+      <TextField fx:id="txtMentorSkill" layoutX="111.0" layoutY="277.0" />
+      <Label layoutX="320.0" layoutY="152.0" text="Availability:" />
+      <TextField fx:id="txtMentorAvailability" layoutX="394.0" layoutY="148.0" />
       <Label fx:id="txtConfirm" layoutX="106.0" layoutY="310.0" />
-      <HBox layoutX="17.0" layoutY="163.0" prefHeight="36.0" prefWidth="441.0">
-         <children>
-            <HBox prefHeight="36.0" prefWidth="225.0">
-               <children>
-                  <Label text="Skill:" />
-                  <TextField fx:id="txtMentorSkill" />
-               </children>
-            </HBox>
-            <Label text="Availability:" />
-            <TextField fx:id="txtMentorAvailability" />
-         </children>
-      </HBox>
-      <HBox layoutX="17.0" layoutY="232.0" prefHeight="36.0" prefWidth="441.0">
-         <children>
-            <HBox prefHeight="36.0" prefWidth="225.0">
-               <children>
-                  <Label text="Booking fee:" />
-                  <TextField fx:id="txtMentorBookingFee" />
-               </children>
-            </HBox>
-            <Label text="Status:" />
-            <ComboBox fx:id="txtMentorStatus" prefWidth="150.0" />
-         </children>
-      </HBox>
-      <HBox layoutX="17.0" layoutY="90.0" prefHeight="36.0" prefWidth="441.0">
-         <children>
-            <HBox prefHeight="36.0" prefWidth="225.0">
-               <children>
-                  <Label text="ID:" />
-                  <TextField fx:id="txtMentorID" />
-               </children>
-            </HBox>
-            <Label text="Name:" />
-            <TextField fx:id="txtMentorName" />
-         </children>
-      </HBox>
-      <Button layoutX="201.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="43.0" prefWidth="104.0" text="Update" />
+      <Label layoutX="54.0" layoutY="218.0" text="Name:" />
+      <TextField fx:id="txtMentorName" layoutX="113.0" layoutY="214.0" />
+      <Label layoutX="54.0" layoutY="152.0" text="ID:" />
+      <TextField fx:id="txtMentorID" layoutX="111.0" layoutY="148.0" />
+      <Label layoutX="322.0" layoutY="281.0" text="Status:" />
+      <ComboBox fx:id="txtMentorStatus" layoutX="394.0" layoutY="277.0" prefWidth="150.0" />
+      <Button fx:id="btnUpdate" layoutX="235.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="UPDATE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
 	</children>
 </AnchorPane>

@@ -2,148 +2,60 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="850.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.CarManagerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="475.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.student.GroupDetailsController">
 	<children>
-		<Text fill="#0598ff" layoutX="350.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Car Manager">
+		<Text fill="#0598ff" layoutX="157.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Group Details">
 			<font>
 				<Font name="System Bold" size="25.0" />
 			</font>
 		</Text>
-		<ScrollPane layoutX="25.0" layoutY="99.0" prefHeight="311.0" prefWidth="800.0">
-			<content>
-				<TableView fx:id="carTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="307.0" prefWidth="800.0">
+				<TableView fx:id="groupTable" layoutX="18.0" layoutY="234.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="176.0" prefWidth="438.0">
 					<columns>
-						<TableColumn fx:id="idColumn" prefWidth="41.600004971027374" text="ID" />
-						<TableColumn fx:id="nameColumn" prefWidth="100.00000381469727" text="Name" />
-						<TableColumn fx:id="modelYearColumn" prefWidth="102.4000244140625" text="Year" />
-						<TableColumn fx:id="colorColumn" prefWidth="107.19992065429688" text="Color" />
-						<TableColumn fx:id="capacityColumn" prefWidth="100.0" text="Capacity" />
-						<TableColumn fx:id="descriptionColumn" prefWidth="150.0" text="Description" />
-						<TableColumn fx:id="importDateColumn" prefWidth="100.0" text="Import Date" />
-						<TableColumn fx:id="producerColumn" prefWidth="100.0" text="Producer" />
-						<TableColumn fx:id="priceColumn" prefWidth="115.20001220703125" text="Price" />
-						<TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status" />
+						<TableColumn fx:id="idColumn" prefWidth="124.00006675720215" text="ID" />
+						<TableColumn fx:id="nameColumn" prefWidth="312.7999267578125" text="Name" />
 					</columns>
 				</TableView>
-			</content>
-		</ScrollPane>
-		<GridPane hgap="30.0" layoutX="74.0" layoutY="423.0" prefHeight="214.0" prefWidth="674.0" vgap="20.0">
-			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="129.20001220703125" minWidth="10.0" prefWidth="111.40000610351562" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="252.4000015258789" minWidth="10.0" prefWidth="93.79999389648438" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="207.79998779296875" minWidth="10.0" prefWidth="104.1999755859375" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="226.60003662109375" minWidth="10.0" prefWidth="108.20002441406251" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="188.4000244140625" minWidth="10.0" prefWidth="96.99996337890627" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="183.7999267578125" minWidth="10.0" prefWidth="128.5999877929687" />
-			</columnConstraints>
-			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints />
-			</rowConstraints>
-			<children>
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="ID:" textAlignment="RIGHT" underline="true" GridPane.halignment="RIGHT">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="txtCarId" disable="true" editable="false" maxWidth="-Infinity" prefHeight="26.0" prefWidth="52.0" GridPane.columnIndex="1" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="Name:" textAlignment="RIGHT" underline="true" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="txtCarName" prefHeight="26.0" prefWidth="275.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="Year:" textAlignment="RIGHT" underline="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="txtCarModelYear" prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="Color:" textAlignment="RIGHT" underline="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="txtColor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="198.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="Capacity:" textAlignment="RIGHT" underline="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="txtCapacity" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="Description:" textAlignment="RIGHT" underline="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="txtDescription" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="Import Date:" textAlignment="RIGHT" underline="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-				<DatePicker fx:id="txtImportDate" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="Producer:" textAlignment="RIGHT" underline="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="txtProducer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="Price:" textAlignment="RIGHT" underline="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="txtRentPrice" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.columnSpan="2" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="85.0" styleClass="form-label" text="Status:" textAlignment="RIGHT" underline="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-            <ComboBox fx:id="cmbStatus" prefHeight="26.0" prefWidth="117.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-			</children>
-		</GridPane>
-		<Button fx:id="btnClear" layoutX="14.0" layoutY="423.0" mnemonicParsing="false" onAction="#handleClear" prefHeight="40.0" prefWidth="80.0" styleClass="crud-button" text="Clear">
-			<font>
-				<Font size="14.0" />
-			</font>
-		</Button>
-      <HBox alignment="CENTER" layoutX="64.0" layoutY="651.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="70.0" prefWidth="722.0" spacing="100.0">
-         <children>
-            <Button fx:id="btnAdd" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleAdd" prefHeight="40.0" prefWidth="135.0" styleClass="crud-button" text="Add" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnDelete" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleDelete" prefHeight="40.0" prefWidth="141.0" styleClass="crud-button" text="Delete" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnEdit" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleEdit" prefHeight="40.0" prefWidth="135.0" styleClass="crud-button" text="Edit" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
+      <Label layoutX="284.0" layoutY="425.0" prefHeight="20.0" prefWidth="93.0" text="Wallet points:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtWalletPoint" editable="false" layoutX="383.0" layoutY="422.0" prefHeight="26.0" prefWidth="61.0" />
+      <Button fx:id="btnAdd" layoutX="206.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="20.0" prefWidth="62.0" styleClass="crud-button" text="Add">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="txtConfirm" layoutX="36.0" layoutY="427.0" />
+      <TextField fx:id="txtAdd" layoutX="19.0" layoutY="193.0" prefHeight="26.0" prefWidth="171.0" promptText="Thêm thành viên" />
+      <Label fx:id="txtGroupName" layoutX="19.0" layoutY="87.0" text="Group Name">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtTopic" layoutX="19.0" layoutY="103.0" text="Topic">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="19.0" layoutY="132.0" text="Progress:">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbProgress" layoutX="72.0" layoutY="127.0" prefWidth="150.0" />
+      <Button fx:id="btnUpdate" layoutX="235.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="27.0" prefWidth="69.0" styleClass="crud-button" text="Update">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
 	</children>
 </AnchorPane>

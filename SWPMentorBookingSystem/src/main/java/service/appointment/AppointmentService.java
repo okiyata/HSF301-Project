@@ -16,4 +16,6 @@ public interface AppointmentService {
 	Appointment findById(Integer appointmentId);
 
 	List<Appointment> findAll();
+	
+	List<Appointment> getAppointmentsByGroupId(int groupId);
 }

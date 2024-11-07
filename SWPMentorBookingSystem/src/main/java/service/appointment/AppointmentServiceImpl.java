@@ -44,4 +44,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 		return repo.findAll();
 	}
 
+	@Override
+	public List<Appointment> getAppointmentsByGroupId(int groupId) {
+		return repo.getAppointmentsByGroupId(groupId);
+	}
+
 }

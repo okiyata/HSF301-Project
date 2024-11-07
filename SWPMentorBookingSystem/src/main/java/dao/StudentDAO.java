@@ -7,7 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
+import pojo.ProjectGroup;
 import pojo.Student;
 
 public class StudentDAO {
@@ -81,6 +83,24 @@ public class StudentDAO {
             session.close();
         }
         
+        return student;
+    }
+    
+    public Student findByName(String studentName) {
+        Session session = sessionFactory.openSession();
+        Student student = null;
+
+        try {
+            Query<Student> query = session.createQuery("FROM Student WHERE studentName = :studentName", Student.class);
+            query.setParameter("studentName", studentName);
+
+            student = query.uniqueResult();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+
         return student;
     }
 

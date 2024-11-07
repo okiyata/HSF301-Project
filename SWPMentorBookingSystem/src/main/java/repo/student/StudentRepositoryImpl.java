@@ -45,4 +45,9 @@ public class StudentRepositoryImpl implements StudentRepository {
 		return dao.findAll();
 	}
 
+	@Override
+	public Student findByName(String studentName) {
+		return dao.findByName(studentName);
+	}
+
 }
