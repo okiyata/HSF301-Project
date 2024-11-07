@@ -45,4 +45,9 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
 		return dao.findAll();
 	}
 
+	@Override
+	public List<Appointment> getAppointmentsByGroupId(int groupId) {
+		return dao.getAppointmentsByGroupId(groupId);
+	}
+
 }

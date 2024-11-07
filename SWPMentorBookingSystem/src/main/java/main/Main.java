@@ -35,7 +35,7 @@ public class Main {
             studentAccount2.setStudent(student2);
 
             // Tạo ProjectGroup và thêm thành viên
-            ProjectGroup projectGroup = new ProjectGroup("Jewelry Product", "FA24_LamNN15_Nhom1", "In Progress", 10);
+            ProjectGroup projectGroup = new ProjectGroup("Jewelry Product", "FA24_LamNN15_Nhom1", student, "In Progress", 10);
             projectGroup.addMember(student);
             student.setProjectGroup(projectGroup);
 
@@ -52,7 +52,7 @@ public class Main {
 
             // Tạo Appointment giữa ProjectGroup và Mentor
             Appointment appointment = new Appointment(projectGroup, mentor, LocalDateTime.now().plusDays(1),
-                    "Spring Framework", "BOOKED");
+                    "Spring Framework", mentor.getBookingFee(), "BOOKED");
             session.save(appointment);
 
             // Tạo Rating cho Mentor và ProjectGroup

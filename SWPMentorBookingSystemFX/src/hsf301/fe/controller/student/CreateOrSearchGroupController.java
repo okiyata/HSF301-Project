@@ -5,6 +5,7 @@ import java.util.List;
 
 import hsf301.fe.controller.AlertController;
 import hsf301.fe.controller.CustomSession;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -69,8 +70,12 @@ public class CreateOrSearchGroupController {
 	private void initialize() {
 		idColumn.setCellValueFactory(new PropertyValueFactory<>("groupID"));
 		topicColumn.setCellValueFactory(new PropertyValueFactory<>("topic"));
-		membersColumn.setCellValueFactory(new PropertyValueFactory<>("memberCount"));
 		progressColumn.setCellValueFactory(new PropertyValueFactory<>("progress"));
+		membersColumn.setCellValueFactory(cellData -> {
+	        ProjectGroup group = cellData.getValue();
+	        int memberCount = projectGroupService.getMemberCount(group.getGroupID());
+	        return new SimpleIntegerProperty(memberCount).asObject();
+	    });
 
 		groupTable.setItems(FXCollections.observableArrayList());
 
@@ -135,7 +140,8 @@ public class CreateOrSearchGroupController {
 		boolean joined = studentService.joinGroup(selectedGroup.getGroupID(), student.getStudentID());
 		if (joined) {
 			txtConfirm.setText("Joined group " + selectedGroup.getGroupID() + " successfully!");
-//			loadUI("GroupDetails");
+			session.getProperties().put("currentGroup", selectedGroup);
+			loadUI("GroupDetails");
 		} else {
 			txtConfirm.setText("Unable to join group " + selectedGroup.getGroupID());
 		}

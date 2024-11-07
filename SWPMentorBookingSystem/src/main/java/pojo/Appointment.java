@@ -24,18 +24,22 @@ public class Appointment {
 	private String skillRequested;
 
 	@Column(nullable = false)
-	private String status; // BOOKED, CANCELLED, Finish
+	private int fee;
+
+	@Column(nullable = false)
+	private String status; // AWAIT_APPROVAL, APPROVE, DENIED, FINISHED
 
 	public Appointment() {
 		super();
 	}
 
-	public Appointment(ProjectGroup projectGroup, Mentor mentor, LocalDateTime dateTime, String skillRequested,
+	public Appointment(ProjectGroup projectGroup, Mentor mentor, LocalDateTime dateTime, String skillRequested, int fee,
 			String status) {
 		this.projectGroup = projectGroup;
 		this.mentor = mentor;
 		this.dateTime = dateTime;
 		this.skillRequested = skillRequested;
+		this.fee = fee;
 		this.status = status;
 	}
 
@@ -87,10 +91,18 @@ public class Appointment {
 		this.skillRequested = skillRequested;
 	}
 
+	public int getFee() {
+		return fee;
+	}
+
+	public void setFee(int fee) {
+		this.fee = fee;
+	}
+
 	@Override
 	public String toString() {
 		return "Appointment [appointmentID=" + appointmentID + ", dateTime=" + dateTime + ", skillRequested="
-				+ skillRequested + ", status=" + status + "]";
+				+ skillRequested + ", fee=" + fee + ", status=" + status + "]";
 	}
 
 }
