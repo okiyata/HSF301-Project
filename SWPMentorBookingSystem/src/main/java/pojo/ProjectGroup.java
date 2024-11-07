@@ -12,11 +12,11 @@ public class ProjectGroup {
 
 	@Column(nullable = false)
 	private String groupName;
-	
+
 	@Column(nullable = false)
 	private String topic;
 
-	@OneToMany(mappedBy = "projectGroup", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "projectGroup", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Student> members = new ArrayList<>();
 
 	@Column(nullable = false)
@@ -32,7 +32,8 @@ public class ProjectGroup {
 		super();
 	}
 
-	public ProjectGroup(String topic, String groupName, List<Student> members, String progress, int walletPoints, List<Appointment> appointments) {
+	public ProjectGroup(String topic, String groupName, List<Student> members, String progress, int walletPoints,
+			List<Appointment> appointments) {
 		this.topic = topic;
 		this.groupName = groupName;
 		this.members = members;
@@ -113,6 +114,14 @@ public class ProjectGroup {
 	public void addAppointment(Appointment appointment) {
 		appointment.setProjectGroup(this);
 		this.appointments.add(appointment);
+	}
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
 	}
 
 	@Override

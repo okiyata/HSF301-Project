@@ -73,4 +73,9 @@ public class StudentServiceImpl implements StudentService{
         }
     }
 
+	@Override
+	public Student findByName(String studentName) {
+		return studentRepo.findByName(studentName);
+	}
+
 }

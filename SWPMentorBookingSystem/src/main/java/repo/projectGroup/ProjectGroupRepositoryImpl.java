@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.ProjectGroupDAO;
 import pojo.ProjectGroup;
+import pojo.Student;
 
 public class ProjectGroupRepositoryImpl implements ProjectGroupRepository {
 
@@ -51,8 +52,26 @@ public class ProjectGroupRepositoryImpl implements ProjectGroupRepository {
 	}
 
 	@Override
+	public ProjectGroup findGroupByStudentId(int studentID) {
+		return dao.findGroupByStudentId(studentID);
+	}
+
+	@Override
+	public boolean addMemberToGroup(int groupID, int studentID) {
+		return dao.addMemberToGroup(groupID, studentID);
+	}
+
+	@Override
+	public int getMemberCount(int groupID) {
+		return dao.getMemberCount(groupID);
+	}
+
+	@Override
+	public List<Student> getMembers(int groupID) {
+		return dao.getMembers(groupID);
+    
+  @Override
 	public String getGroupNameById(int groupID) {
-		// TODO Auto-generated method stub
 		return dao.getGroupNameById(groupID);
 	}
 
