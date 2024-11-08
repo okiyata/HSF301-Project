@@ -8,20 +8,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.mentor.MentorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.AdminController">
 	<left>
 		<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="225.0" styleClass="sidebar" stylesheets="@../application.css" BorderPane.alignment="CENTER">
 			<children>
-				<VBox alignment="CENTER" layoutY="46.0" prefHeight="300.0" prefWidth="225.0" spacing="15.0">
+				<VBox alignment="CENTER" layoutY="76.0" prefHeight="300.0" prefWidth="225.0" spacing="15.0">
 					<children>
-						<Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="MENTOR" textAlignment="CENTER" wrappingWidth="150.0">
+						<Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="ADMIN" textAlignment="CENTER" wrappingWidth="150.0">
 							<font>
 								<Font name="System Bold" size="22.0" />
 							</font>
 						</Text>
-						<Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleLoadProfile" styleClass="sidebar-button" text="Profile" />
-						<Button fx:id="appointmentButton" mnemonicParsing="false" onAction="#handleAppointment" styleClass="sidebar-button" text="Appointment" />
-						<Button fx:id="historyButton" mnemonicParsing="false" onAction="#handleHistory" styleClass="sidebar-button" text="History" />
+						<Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#handleCreateAccount" styleClass="sidebar-button" text="New Account" />
+						<Button fx:id="groupButton" mnemonicParsing="false" styleClass="sidebar-button" text="Group" />
+						<Button fx:id="appointmentButton" mnemonicParsing="false" styleClass="sidebar-button" text="Appointment" />
                   <Button fx:id="ratingButton" mnemonicParsing="false" onAction="#handleRating" styleClass="sidebar-button" text="Rating" />
 						<Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" styleClass="sidebar-button" text="Logout" />
 

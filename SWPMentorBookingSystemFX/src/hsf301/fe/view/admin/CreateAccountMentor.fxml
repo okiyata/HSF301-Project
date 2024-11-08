@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.CreateAccountMentor">
+	<children>
+		<Text fill="#0598ff" layoutX="172.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Create Mentor Account">
+			<font>
+				<Font name="System Bold" size="25.0" />
+			</font>
+		</Text>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleTurnback" prefHeight="33.0" prefWidth="74.0" styleClass="crud-button" text="&lt;----">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="51.0" layoutY="94.0" text="Username:" />
+      <TextField fx:id="txtUsername" layoutX="119.0" layoutY="90.0" />
+      <Label layoutX="52.0" layoutY="141.0" text="Password:" />
+      <TextField fx:id="txtPassword" layoutX="119.0" layoutY="137.0" />
+      <Label layoutX="54.0" layoutY="185.0" text="Name:" />
+      <TextField fx:id="txtName" layoutX="119.0" layoutY="181.0" prefHeight="23.0" prefWidth="150.0" />
+      <Label layoutX="309.0" layoutY="138.0" text="Skills:" />
+      <TextField fx:id="txtSkills" layoutX="384.0" layoutY="181.0" />
+      <Label layoutX="309.0" layoutY="94.0" text="Availability:" />
+      <TextField fx:id="txtAvailability" layoutX="384.0" layoutY="134.0" />
+      <Label layoutX="305.0" layoutY="185.0" text="BookingFee:" />
+      <TextField fx:id="txtBookingFee" layoutX="384.0" layoutY="90.0" />
+      <Button layoutX="235.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleCreate" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="Create">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="groupTable" layoutY="274.0" prefHeight="226.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="mentorID" prefWidth="44.000030517578125" text="ID" />
+          <TableColumn fx:id="name" prefWidth="138.39999389648438" text="Name" />
+            <TableColumn fx:id="skills" prefWidth="130.4000244140625" text="Skills" />
+            <TableColumn fx:id="availability" prefWidth="132.0" text="Availability" />
+            <TableColumn fx:id="bookingFee" prefWidth="77.5999755859375" text="BookingFee" />
+            <TableColumn fx:id="status" prefWidth="81.5999755859375" text="Status" />
+        </columns>
+      </TableView>
+	</children>
+</AnchorPane>
