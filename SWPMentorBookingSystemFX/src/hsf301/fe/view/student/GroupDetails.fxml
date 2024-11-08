@@ -17,7 +17,7 @@
 				<Font name="System Bold" size="25.0" />
 			</font>
 		</Text>
-				<TableView fx:id="groupTable" layoutX="18.0" layoutY="234.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="176.0" prefWidth="438.0">
+				<TableView fx:id="groupTable" layoutX="18.0" layoutY="232.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="176.0" prefWidth="438.0">
 					<columns>
 						<TableColumn fx:id="idColumn" prefWidth="124.00006675720215" text="ID" />
 						<TableColumn fx:id="nameColumn" prefWidth="312.7999267578125" text="Name" />
@@ -29,30 +29,29 @@
          </font>
       </Label>
       <TextField fx:id="txtWalletPoint" editable="false" layoutX="383.0" layoutY="422.0" prefHeight="26.0" prefWidth="61.0" />
-      <Button fx:id="btnAdd" layoutX="206.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="20.0" prefWidth="62.0" styleClass="crud-button" text="Add">
+      <Button fx:id="btnAdd" layoutX="206.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="20.0" prefWidth="62.0" styleClass="crud-button" text="Add">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="txtConfirm" layoutX="36.0" layoutY="427.0" />
-      <TextField fx:id="txtAdd" layoutX="19.0" layoutY="193.0" prefHeight="26.0" prefWidth="171.0" promptText="Thêm thành viên" />
-      <Label fx:id="txtGroupName" layoutX="19.0" layoutY="87.0" text="Group Name">
+      <TextField fx:id="txtAdd" layoutX="19.0" layoutY="191.0" prefHeight="26.0" prefWidth="171.0" promptText="Thêm thành viên" />
+      <Label fx:id="txtGroupName" layoutX="19.0" layoutY="106.0" text="Group Name">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="txtTopic" layoutX="19.0" layoutY="103.0" text="Topic">
+      <Label fx:id="txtTopic" layoutX="19.0" layoutY="122.0" text="Topic">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="132.0" text="Progress:">
+      <Label layoutX="19.0" layoutY="151.0" text="Progress:">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbProgress" layoutX="72.0" layoutY="127.0" prefWidth="150.0" />
-      <Button fx:id="btnUpdate" layoutX="235.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="27.0" prefWidth="69.0" styleClass="crud-button" text="Update">
+      <ComboBox fx:id="cbProgress" layoutX="72.0" layoutY="146.0" prefWidth="150.0" />
+      <Button fx:id="btnUpdate" layoutX="235.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="27.0" prefWidth="69.0" styleClass="crud-button" text="Update">
          <font>
             <Font size="14.0" />
          </font>

@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -41,11 +42,13 @@ public class AppointmentController {
 	private TableColumn<Appointment, Integer> fee;
 
 	@FXML
-	private Button btnAproved;
+	private Button btnApprove;
 	@FXML
-	private Button btnDenied;
+	private Button btnDeny;
 	@FXML
-	private Button btnFinished;
+	private Button btnFinish;
+	@FXML
+	private Label txtInitMessage;
 
 	private CustomSession session;
 	private MentorService mentorService;
@@ -78,18 +81,34 @@ public class AppointmentController {
 		
 		groupTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 	        if (newSelection != null) {
-	            String status = newSelection.getStatus();
-	            btnFinished.setDisable(!"APPROVED".equals(status));
+	            String appointmentStatus = newSelection.getStatus();
+	            txtInitMessage.setVisible(false);
+	            
+	            switch (appointmentStatus) {
+	                case "AWAIT_APPROVAL":
+	                    btnApprove.setVisible(true);
+	                    btnApprove.setDisable(false);
+	                    btnDeny.setVisible(true);
+	                    btnDeny.setDisable(false);
+	                    btnFinish.setVisible(false);
+	                    break;
+	                
+	                case "APPROVED":
+	                    btnApprove.setVisible(false);
+	                    btnDeny.setVisible(false);
+	                    btnFinish.setVisible(true);
+	                    btnFinish.setDisable(false);
+	                    break;
+	                
+	                default:
+	                    break;
+	            }
 	        } else {
-	            btnFinished.setDisable(true);
-	        }
-	    });
-		groupTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-	        if (newSelection != null) {
-	            String status = newSelection.getStatus();
-	            btnAproved.setDisable("APPROVED".equals(status));
-	        } else {
-	        	btnAproved.setDisable(true);
+	            txtInitMessage.setText("Chọn một Appointment");
+	            txtInitMessage.setVisible(true);
+	            btnApprove.setVisible(false);
+	            btnDeny.setVisible(false);
+	            btnFinish.setVisible(false);
 	        }
 	    });
 
@@ -104,7 +123,7 @@ public class AppointmentController {
 	}
 
 	@FXML
-	public void handleApproved() {
+	public void handleApprove() {
 		try {
 			Appointment selectedAppointment = groupTable.getSelectionModel().getSelectedItem();
 			selectedAppointment.setStatus("APPROVED");
@@ -118,7 +137,7 @@ public class AppointmentController {
 	}
 
 	@FXML
-	public void handleDenied() {
+	public void handleDeny() {
 		try {
 			Appointment selectedAppointment = groupTable.getSelectionModel().getSelectedItem();
 			selectedAppointment.setStatus("DENIED");
@@ -131,7 +150,7 @@ public class AppointmentController {
 	}
 
 	@FXML
-	public void handleFinished() {
+	public void handleFinish() {
 		try {
 			Appointment selectedAppointment = groupTable.getSelectionModel().getSelectedItem();
 			if (selectedAppointment.getStatus().equals("APPROVED")) {
