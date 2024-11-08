@@ -25,18 +25,18 @@
             <TableColumn fx:id="fee" prefWidth="37.60001220703123" text="Fee" />
          </columns>
       </TableView>
-      <Button fx:id="btnAproved" layoutX="90.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleApproved" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="APPROVED">
+      <Button fx:id="btnApprove" layoutX="145.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleApprove" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="APPROVE" visible="false">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="txtConfirm" layoutX="106.0" layoutY="310.0" />
-      <Button fx:id="btnDenied" layoutX="229.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleDenied" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="DENIED">
+      <Label fx:id="txtInitMessage" layoutX="235.0" layoutY="375.0" prefHeight="21.0" prefWidth="130.0" text="Choose an appointment" />
+      <Button fx:id="btnDeny" layoutX="326.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleDeny" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="DENY" visible="false">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnFinished" layoutX="369.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleFinished" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="FINISHED">
+      <Button fx:id="btnFinish" layoutX="235.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleFinish" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="FINISH" visible="false">
          <font>
             <Font size="14.0" />
          </font>

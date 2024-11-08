@@ -23,6 +23,7 @@ public class Main {
             Account mentorAccount = new Account("mentor1", "1234", "MENTOR");
             Account studentAccount = new Account("student1", "1234", "STUDENT");
             Account studentAccount2 = new Account("student2", "1234", "STUDENT");
+            Account adminAccount = new Account("admin", "1234", "ADMIN");
 
             // Tạo Mentor và ProjectGroup
             Mentor mentor = new Mentor("Mentor1", "Java, Spring", "Weekdays", 5, "AVAILABLE", mentorAccount);
@@ -43,6 +44,7 @@ public class Main {
             session.save(mentorAccount);
             session.save(studentAccount);
             session.save(studentAccount2);
+            session.save(adminAccount);
 
             session.save(mentor);
             session.save(student);

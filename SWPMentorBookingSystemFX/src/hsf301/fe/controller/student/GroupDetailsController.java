@@ -43,8 +43,6 @@ public class GroupDetailsController {
     @FXML
     private Label txtTopic;
     @FXML
-    private Label txtConfirm;
-    @FXML
     private ComboBox<String> cbProgress;
 
     private ProjectGroupService projectGroupService;
@@ -93,9 +91,15 @@ public class GroupDetailsController {
     }
 
     private void disableEditing() {
-        txtAdd.setDisable(true);
-        btnAdd.setDisable(true);
-        btnUpdate.setDisable(true);
+        txtAdd.setVisible(false);
+        txtAdd.setManaged(false);
+
+        btnAdd.setVisible(false);
+        btnAdd.setManaged(false);
+
+        btnUpdate.setVisible(false);
+        btnUpdate.setManaged(false);
+
         cbProgress.setDisable(true);
     }
 
@@ -132,10 +136,10 @@ public class GroupDetailsController {
 
         boolean added = projectGroupService.addMemberToGroup(currentGroup.getGroupID(), newMember.getStudentID());
         if (added) {
-            txtConfirm.setText("Added " + memberName + " to the group successfully!");
+            AlertController.showAlert(Alert.AlertType.INFORMATION, "Added Successful!", "Added " + memberName + " to the group successfully!");
             loadMemberTable();
         } else {
-            AlertController.showAlert(Alert.AlertType.WARNING, "Add Failed", memberName + " is already in the group or cannot be added.");
+            AlertController.showAlert(Alert.AlertType.WARNING, "Added Successfully!", memberName + " is already in the group or cannot be added.");
         }
     }
 
@@ -154,6 +158,6 @@ public class GroupDetailsController {
 
         currentGroup.setProgress(selectedProgress);
         projectGroupService.update(currentGroup);
-        txtConfirm.setText("Progress updated successfully to: " + selectedProgress);
+        AlertController.showAlert(Alert.AlertType.WARNING, "Updated Successfully!", "Progress updated successfully to: " + selectedProgress);
     }
 }

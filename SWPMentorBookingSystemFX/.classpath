@@ -11,11 +11,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/SWPMentorBookingSystem"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/SWPMentorBookingSystem"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
