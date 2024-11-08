@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import hsf301.fe.controller.AlertController;
-import hsf301.fe.controller.CustomSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,12 +19,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pojo.Account;
-import pojo.Mentor;
 import pojo.Student;
 import service.account.AccountService;
 import service.account.AccountServiceImpl;
-import service.mentor.MentorService;
-import service.mentor.MentorServiceImpl;
 import service.student.StudentService;
 import service.student.StudentServiceImpl;
 

@@ -21,7 +21,9 @@ public class AdminController {
     @FXML
     private Button appointmentButton;
     @FXML
-    private Button historyButton;
+    private Button groupButton;
+    @FXML
+    private Button ratingButton;
     @FXML
     private Button logoutButton;
 
@@ -49,21 +51,29 @@ public class AdminController {
         }
     }
 
-//    @FXML
-//    public void handleAppointment(ActionEvent event) {
-//        if (selectedButton != appointmentButton) {
-//            loadUI("Appointments");  // Tải UI Appointments
-//            setSelectedButton(appointmentButton);
-//        }
-//    }
-//
-//    @FXML
-//    public void handleHistory(ActionEvent event) {
-//        if (selectedButton != historyButton) {
-//            loadUI("History");  
-//            setSelectedButton(historyButton);
-//        }
-//    }
+    @FXML
+    public void handleAppointment(ActionEvent event) {
+        if (selectedButton != appointmentButton) {
+            loadUI("Appointments");  
+            setSelectedButton(appointmentButton);
+        }
+    }
+
+    @FXML
+    public void handleGroup(ActionEvent event) {
+        if (selectedButton != groupButton) {
+            loadUI("Groups");  
+            setSelectedButton(groupButton);
+        }
+    }
+
+    @FXML
+    public void handleRating(ActionEvent event) {
+        if (selectedButton != ratingButton) {
+            loadUI("Rating");  
+            setSelectedButton(ratingButton);
+        }
+    }
 
     @FXML
     public void handleLogout(ActionEvent event) throws IOException {
