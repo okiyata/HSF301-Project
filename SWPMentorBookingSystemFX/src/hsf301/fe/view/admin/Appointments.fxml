@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.AppointmentController">
+   <children>
+      <Text fill="#0598ff" layoutX="112.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="APPOINTMENT MANAGEMENT ">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <TableView fx:id="groupTable" layoutX="18.0" layoutY="170.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="275.0" prefWidth="562.0">
+         <columns>
+            <TableColumn fx:id="appointmentID" prefWidth="32.00006103515625" text="ID" />
+            <TableColumn fx:id="dateTime" prefWidth="104.0" text="Date" />
+            <TableColumn fx:id="skillRequested" prefWidth="122.4000244140625" text="Skill Requested" />
+            <TableColumn fx:id="status" prefWidth="115.20001220703125" text="Status" />
+            <TableColumn fx:id="groupName" prefWidth="126.4000244140625" text="Group Name" />
+            <TableColumn fx:id="fee" prefWidth="59.99993896484375" text="Fee" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
