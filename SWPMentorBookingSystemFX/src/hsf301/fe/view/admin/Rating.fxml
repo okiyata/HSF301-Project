@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.RatingController">
+	<children>
+		<Text fill="#0598ff" layoutX="210.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Rating Manage">
+			<font>
+				<Font name="System Bold" size="25.0" />
+			</font>
+		</Text>
+      <Label fx:id="txtConfirm" layoutX="106.0" layoutY="310.0" />
+      <TableView fx:id="ratingTable" layoutX="44.0" layoutY="196.0" prefHeight="262.0" prefWidth="511.0">
+        <columns>
+          <TableColumn fx:id="appointmentIDColumn" prefWidth="100.0" text="AppointmentID" />
+          <TableColumn fx:id="ratingColumn" text="Rating" />
+            <TableColumn fx:id="feedbackColumn" prefWidth="225.5999755859375" text="Feedback" />
+            <TableColumn fx:id="ratingTypeColumn" prefWidth="106.40008544921875" text="RatingType" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="cbRatingType" layoutX="326.0" layoutY="157.0" prefHeight="23.0" prefWidth="97.0" />
+      <ComboBox fx:id="cbRating" layoutX="491.0" layoutY="157.0" prefHeight="23.0" prefWidth="55.0" />
+      <TextField fx:id="txtSearch" layoutX="52.0" layoutY="157.0" prefHeight="23.0" prefWidth="74.0" promptText="ID" />
+      <Label layoutX="256.0" layoutY="161.0" text="RatingType:" />
+      <Label layoutX="448.0" layoutY="161.0" text="Rating:" />
+      <Label fx:id="txtConfirm" layoutX="210.0" layoutY="469.0" textFill="RED" />
+	</children>
+</AnchorPane>

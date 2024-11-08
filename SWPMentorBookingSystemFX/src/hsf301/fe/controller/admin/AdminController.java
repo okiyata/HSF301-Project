@@ -21,7 +21,7 @@ public class AdminController {
     @FXML
     private Button appointmentButton;
     @FXML
-    private Button historyButton;
+    private Button ratingButton;
     @FXML
     private Button logoutButton;
 
@@ -57,13 +57,13 @@ public class AdminController {
 //        }
 //    }
 //
-//    @FXML
-//    public void handleHistory(ActionEvent event) {
-//        if (selectedButton != historyButton) {
-//            loadUI("History");  
-//            setSelectedButton(historyButton);
-//        }
-//    }
+    @FXML
+    public void handleRating(ActionEvent event) {
+        if (selectedButton != ratingButton) {
+            loadUI("Rating");  
+            setSelectedButton(ratingButton);
+        }
+    }
 
     @FXML
     public void handleLogout(ActionEvent event) throws IOException {
