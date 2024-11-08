@@ -3,11 +3,6 @@ package hsf301.fe.controller.admin;
 import java.io.IOException;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-
 import hsf301.fe.controller.AlertController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

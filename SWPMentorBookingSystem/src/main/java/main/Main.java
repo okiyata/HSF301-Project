@@ -7,69 +7,97 @@ import org.hibernate.cfg.Configuration;
 import pojo.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
     public static void main(String[] args) {
-        // Khởi tạo SessionFactory từ hibernate.cfg.xml
         SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 
-        // Tạo session để thực hiện các thao tác CRUD
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
         try {
-            // Tạo Account cho Mentor và Students
-            Account mentorAccount = new Account("mentor1", "1234", "MENTOR");
-            Account studentAccount = new Account("student1", "1234", "STUDENT");
-            Account studentAccount2 = new Account("student2", "1234", "STUDENT");
-            Account adminAccount = new Account("admin", "1234", "ADMIN");
+            List<Account> mentorAccounts = new ArrayList<>();
+            List<Account> studentAccounts = new ArrayList<>();
+            List<Account> studentNoGroupAccounts = new ArrayList<>();
+            List<Mentor> mentors = new ArrayList<>();
+            List<Student> students = new ArrayList<>();
+            List<Student> studentsNoGroup = new ArrayList<>();
+            List<ProjectGroup> projectGroups = new ArrayList<>();
+            List<Appointment> appointments = new ArrayList<>();
+            List<Rating> ratings = new ArrayList<>();
 
-            // Tạo Mentor và ProjectGroup
-            Mentor mentor = new Mentor("Mentor1", "Java, Spring", "Weekdays", 5, "AVAILABLE", mentorAccount);
+            for (int i = 1; i <= 5; i++) {
+                Account mentorAccount = new Account("mentor" + i, "1234", "MENTOR");
+                Account studentAccount = new Account("student" + i, "1234", "STUDENT");
 
-            // Tạo Students và liên kết với Account
-            Student student = new Student("Student1", studentAccount, null);
-            studentAccount.setStudent(student);
+                mentorAccounts.add(mentorAccount);
+                studentAccounts.add(studentAccount);
 
-            Student student2 = new Student("Student2", studentAccount2, null);
-            studentAccount2.setStudent(student2);
-
-            // Tạo ProjectGroup và thêm thành viên
-            ProjectGroup projectGroup = new ProjectGroup("Jewelry Product", "FA24_LamNN15_Nhom1", student, "In Progress", 10);
-            projectGroup.addMember(student);
-            student.setProjectGroup(projectGroup);
-
-            // Lưu các đối tượng Account, Mentor, và ProjectGroup
-            session.save(mentorAccount);
-            session.save(studentAccount);
-            session.save(studentAccount2);
+                session.save(mentorAccount);
+                session.save(studentAccount);
+            }
+            
+            for (int i = 6; i <= 10; i++) {
+                Account studentNoGroupAccount = new Account("student" + i, "1234", "STUDENT");
+                studentNoGroupAccounts.add(studentNoGroupAccount);
+                session.save(studentNoGroupAccount);
+            }
+            
+            Account adminAccount = new Account("admin", "admin123", "ADMIN");
             session.save(adminAccount);
 
-            session.save(mentor);
-            session.save(student);
-            session.save(student2);
+            for (int i = 1; i <= 5; i++) {
+                Mentor mentor = new Mentor("Mentor" + i, "Java, Spring", "Weekdays", i * 10, "AVAILABLE", mentorAccounts.get(i - 1));
+                mentors.add(mentor);
+                session.save(mentor);
+            }
 
-            session.save(projectGroup);
+            for (int i = 1; i <= 5; i++) {
+                Student student = new Student("Student" + i, studentAccounts.get(i - 1), null);
+                students.add(student);
+                studentAccounts.get(i - 1).setStudent(student);
+                session.save(student);
+            }
+            
+            for (int i = 6; i <= 10; i++) {
+                Student studentNoGroup = new Student("Student" + i, studentNoGroupAccounts.get(i - 6), null);
+                studentsNoGroup.add(studentNoGroup);
+                studentNoGroupAccounts.get(i - 6).setStudent(studentNoGroup);
+                session.save(studentNoGroup);
+            }
 
-            // Tạo Appointment giữa ProjectGroup và Mentor
-            Appointment appointment = new Appointment(projectGroup, mentor, LocalDateTime.now().plusDays(1),
-                    "Spring Framework", mentor.getBookingFee(), "FINISHED");
-            session.save(appointment);
+            for (int i = 1; i <= 5; i++) {
+                ProjectGroup projectGroup = new ProjectGroup("ProjectGroup" + i, "FA24_Nhom" + i, students.get(i - 1), "In Progress", i * 100);
+                projectGroups.add(projectGroup);
 
-            // Tạo Rating cho Mentor và ProjectGroup
-            Rating mentorRating = new Rating(5, "Great mentor!", "MENTOR", appointment);
-            Rating groupRating = new Rating(4, "Good project progress", "GROUP",appointment);
-            session.save(mentorRating);
-            session.save(groupRating);
+                projectGroup.addMember(students.get(i - 1));
+                students.get(i - 1).setProjectGroup(projectGroup);
 
-            // Tạo Notification cho Mentor và ProjectGroup
-            Notification mentorNotification = new Notification("Your session is scheduled.", false, "MENTOR", mentor,
-                    null);
-            Notification groupNotification = new Notification("Project review is scheduled soon.", false, "GROUP", null,
-                    projectGroup);
-            session.save(mentorNotification);
-            session.save(groupNotification);
+                session.save(projectGroup);
+            }
+
+            for (int i = 1; i <= 5; i++) {
+                Appointment appointment = new Appointment(projectGroups.get(i - 1), mentors.get(i - 1), LocalDateTime.now().plusDays(i), "Spring Framework", mentors.get(i - 1).getBookingFee(), "FINISHED");
+                appointments.add(appointment);
+                session.save(appointment);
+            }
+
+            for (int i = 1; i <= 5; i++) {
+            	int randomRating = ThreadLocalRandom.current().nextInt(1, 6);
+            	
+                Rating mentorRating = new Rating(randomRating, "Great mentor!", "MENTOR", appointments.get(i - 1));
+                Rating groupRating = new Rating(randomRating, "Good project progress", "GROUP", appointments.get(i - 1));
+
+                ratings.add(mentorRating);
+                ratings.add(groupRating);
+
+                session.save(mentorRating);
+                session.save(groupRating);
+            }
 
             transaction.commit();
             System.out.println("Data saved successfully!");
@@ -79,10 +107,8 @@ public class Main {
                 transaction.rollback();
             e.printStackTrace();
         } finally {
-            // Đóng session
             session.close();
             sessionFactory.close();
         }
     }
 }
-

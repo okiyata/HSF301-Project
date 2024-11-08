@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.CreateAccountStudent">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.CreateAccountStudent">
 	<children>
-		<Text fill="#0598ff" layoutX="160.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Create Student Account">
+		<Text fill="#0598ff" layoutX="225.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Create Student Account">
 			<font>
 				<Font name="System Bold" size="25.0" />
 			</font>
@@ -22,21 +22,21 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="176.0" layoutY="101.0" text="Username:" />
-      <TextField fx:id="txtUsername" layoutX="272.0" layoutY="97.0" />
-      <Label layoutX="177.0" layoutY="147.0" text="Password:" />
-      <TextField fx:id="txtPassword" layoutX="272.0" layoutY="143.0" />
-      <Button layoutX="235.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleCreate" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="Create">
+      <Label layoutX="227.0" layoutY="102.0" text="Username:" />
+      <TextField fx:id="txtUsername" layoutX="323.0" layoutY="98.0" />
+      <Label layoutX="228.0" layoutY="148.0" text="Password:" />
+      <TextField fx:id="txtPassword" layoutX="323.0" layoutY="144.0" />
+      <Button layoutX="285.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleCreate" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="Create">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="177.0" layoutY="195.0" text="Name:" />
-      <TextField fx:id="txtName" layoutX="272.0" layoutY="191.0" prefHeight="23.0" prefWidth="150.0" />
-      <TableView fx:id="groupTable" layoutY="280.0" prefHeight="220.0" prefWidth="600.0">
+      <Label layoutX="228.0" layoutY="196.0" text="Name:" />
+      <TextField fx:id="txtName" layoutX="323.0" layoutY="192.0" prefHeight="23.0" prefWidth="150.0" />
+      <TableView fx:id="groupTable" layoutY="280.0" prefHeight="220.0" prefWidth="700.0">
         <columns>
           <TableColumn fx:id="studentID" prefWidth="257.5999755859375" text="ID" />
-          <TableColumn fx:id="studentName" prefWidth="330.40008544921875" text="Name" />
+          <TableColumn fx:id="studentName" prefWidth="441.6000061035156" text="Name" />
         </columns>
       </TableView>
 	</children>
