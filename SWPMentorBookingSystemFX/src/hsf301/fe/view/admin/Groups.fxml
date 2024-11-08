@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.GroupController">
+   <children>
+      <Text fill="#0598ff" layoutX="232.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Group Management">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnAdd" layoutX="282.0" layoutY="404.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="34.0" prefWidth="138.0" styleClass="crud-button" text="ADD">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="groupTable" layoutX="5.0" layoutY="120.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="206.0" prefWidth="690.0">
+         <columns>
+            <TableColumn fx:id="groupID" prefWidth="30.399991989135742" text="ID" />
+            <TableColumn fx:id="groupName" prefWidth="175.9999771118164" text="Group Name" />
+            <TableColumn fx:id="progress" prefWidth="104.0" text="Progress" />
+            <TableColumn fx:id="topic" prefWidth="171.2000732421875" text="Topic" />
+            <TableColumn fx:id="walletPoints" prefWidth="83.19992065429688" text="Wallet Points" />
+            <TableColumn fx:id="leaderName" prefWidth="124.00003662109373" text="Leader Name" />
+         </columns>
+      </TableView>
+      <Text fill="#0598ff" layoutX="188.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Point:" wrappingWidth="74.39999999999986">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtPoint" layoutX="286.0" layoutY="353.0" prefHeight="23.0" prefWidth="138.0" />
+   </children>
+</AnchorPane>

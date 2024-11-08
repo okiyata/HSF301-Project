@@ -12,18 +12,6 @@ import javafx.stage.Stage;
 
 public class CreateAccount {
 
-    private Stage stage;
-    private Scene scene;
-
-    public CreateAccount() {
-    
-    }
-
-    @FXML
-    public void initialize() {
-        
-    }
-
     @FXML
     public void handleCreateMentor(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/hsf301/fe/view/admin/AdminUI.fxml"));
@@ -61,6 +49,5 @@ public class CreateAccount {
         stage.centerOnScreen();
         stage.show();
     }
-
 
 }
