@@ -23,6 +23,8 @@ public class AdminController {
     @FXML
     private Button groupButton;
     @FXML
+    private Button ratingButton;
+    @FXML
     private Button logoutButton;
 
     private Button selectedButton; 
@@ -62,6 +64,14 @@ public class AdminController {
         if (selectedButton != groupButton) {
             loadUI("Groups");  
             setSelectedButton(groupButton);
+        }
+    }
+
+    @FXML
+    public void handleRating(ActionEvent event) {
+        if (selectedButton != ratingButton) {
+            loadUI("Rating");  
+            setSelectedButton(ratingButton);
         }
     }
 
