@@ -10,9 +10,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="720.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.student.StudentController">
    <left>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="226.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="235.0" styleClass="sidebar" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" layoutY="24.0" prefHeight="246.0" prefWidth="226.0" spacing="25.0">
+            <VBox alignment="TOP_CENTER" layoutY="24.0" prefHeight="245.0" prefWidth="225.0" spacing="25.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="SWP Mentor Booking System" textAlignment="CENTER" wrappingWidth="201.19998168945312">
                      <font>
@@ -29,7 +29,7 @@
          </children>
       </AnchorPane>
    </left>
-   <center>
+   <right>
       <StackPane fx:id="contentPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="475.0" styleClass="content-pane" BorderPane.alignment="CENTER" />
-   </center>
+   </right>
 </BorderPane>

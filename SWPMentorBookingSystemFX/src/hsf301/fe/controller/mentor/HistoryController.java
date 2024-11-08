@@ -1,5 +1,6 @@
 package hsf301.fe.controller.mentor;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import hsf301.fe.controller.CustomSession;
@@ -43,7 +44,8 @@ public class HistoryController {
     @FXML
     public void initialize() {
         appointmentID.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
-        dateTime.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
+        dateTime.setCellValueFactory(cellData -> new SimpleStringProperty(
+				cellData.getValue().getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))));
         skillRequested.setCellValueFactory(new PropertyValueFactory<>("skillRequested"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         groupName.setCellValueFactory(cellData -> {
