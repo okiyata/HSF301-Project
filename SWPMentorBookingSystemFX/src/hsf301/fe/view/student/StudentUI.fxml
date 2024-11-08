@@ -12,7 +12,7 @@
    <left>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="226.0" styleClass="sidebar" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" layoutY="64.0" prefHeight="246.0" prefWidth="226.0" spacing="25.0">
+            <VBox alignment="TOP_CENTER" layoutY="24.0" prefHeight="246.0" prefWidth="226.0" spacing="25.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="SWP Mentor Booking System" textAlignment="CENTER" wrappingWidth="201.19998168945312">
                      <font>
@@ -20,8 +20,9 @@
                      </font>
                   </Text>
                   <Button fx:id="groupButton" mnemonicParsing="false" onAction="#handleLoadGroup" styleClass="sidebar-button" text="Group" />
-                  <Button fx:id="bookingButton" mnemonicParsing="false" onAction="#handleLoadBooking" styleClass="sidebar-button" text="Booking" />
+                  <Button fx:id="bookingButton" mnemonicParsing="false" onAction="#handleLoadBooking" prefHeight="47.0" prefWidth="117.0" styleClass="sidebar-button" text="Booking" />
                   <Button fx:id="historyButton" mnemonicParsing="false" onAction="#handleLoadBookingHistory" styleClass="sidebar-button" text="Booking History" />
+                  <Button fx:id="ratingButton" mnemonicParsing="false" onAction="#handleLoadRating" styleClass="sidebar-button" text="Rating" />
                   <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" styleClass="sidebar-button" text="Logout" />
                </children>
             </VBox>

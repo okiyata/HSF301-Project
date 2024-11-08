@@ -6,48 +6,34 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.CreateAccountStudent">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hsf301.fe.controller.admin.CreateAccountStudent">
 	<children>
-		<Text fill="#0598ff" layoutX="160.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Create Student Account">
+		<Text fill="#0598ff" layoutX="160.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Create Student Account">
 			<font>
 				<Font name="System Bold" size="25.0" />
 			</font>
 		</Text>
       <Label fx:id="txtConfirm" layoutX="106.0" layoutY="310.0" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleTurnback" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="&lt;----">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleTurnback" prefHeight="33.0" prefWidth="74.0" styleClass="crud-button" text="&lt;----">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <HBox layoutX="195.0" layoutY="109.0" prefHeight="36.0" prefWidth="226.0" />
-      <HBox layoutX="89.0" layoutY="107.0" prefHeight="36.0" prefWidth="449.0">
-         <children>
-            <HBox prefHeight="36.0" prefWidth="226.0">
-               <children>
-                  <Label text="Username:" />
-                  <TextField fx:id="txtUsername" />
-               </children>
-            </HBox>
-            <Label text="Password:" />
-            <TextField fx:id="txtPassword" />
-         </children>
-      </HBox>
-      <HBox layoutX="82.0" layoutY="155.0" prefHeight="36.0" prefWidth="226.0">
-         <children>
-            <Label text="Name:" />
-            <TextField fx:id="txtName" prefHeight="23.0" prefWidth="178.0" />
-         </children>
-      </HBox>
-      <Button layoutX="69.0" layoutY="215.0" mnemonicParsing="false" onAction="#handleCreate" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="Create">
+      <Label layoutX="176.0" layoutY="101.0" text="Username:" />
+      <TextField fx:id="txtUsername" layoutX="272.0" layoutY="97.0" />
+      <Label layoutX="177.0" layoutY="147.0" text="Password:" />
+      <TextField fx:id="txtPassword" layoutX="272.0" layoutY="143.0" />
+      <Button layoutX="235.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleCreate" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="Create">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="groupTable" layoutX="6.0" layoutY="264.0" prefHeight="200.0" prefWidth="590.0">
+      <Label layoutX="177.0" layoutY="195.0" text="Name:" />
+      <TextField fx:id="txtName" layoutX="272.0" layoutY="191.0" prefHeight="23.0" prefWidth="150.0" />
+      <TableView fx:id="groupTable" layoutY="280.0" prefHeight="220.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="studentID" prefWidth="257.5999755859375" text="ID" />
           <TableColumn fx:id="studentName" prefWidth="330.40008544921875" text="Name" />

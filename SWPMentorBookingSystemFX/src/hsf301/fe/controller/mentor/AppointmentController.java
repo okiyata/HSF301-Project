@@ -11,15 +11,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Appointment;
 import pojo.Mentor;
+import pojo.ProjectGroup;
 import service.appointment.AppointmentService;
 import service.appointment.AppointmentServiceImpl;
 import service.mentor.MentorService;
 import service.mentor.MentorServiceImpl;
+import service.projectGroup.ProjectGroupService;
+import service.projectGroup.ProjectGroupServiceImpl;
 
 public class AppointmentController {
 	@FXML
@@ -38,21 +42,25 @@ public class AppointmentController {
 	private TableColumn<Appointment, Integer> fee;
 
 	@FXML
-	private Button btnApproved;
+	private Button btnApprove;
 	@FXML
-	private Button btnDenied;
+	private Button btnDeny;
 	@FXML
-	private Button btnFinished;
+	private Button btnFinish;
+	@FXML
+	private Label txtInitMessage;
 
 	private CustomSession session;
 	private MentorService mentorService;
 	private AppointmentService appointmentService;
+	private ProjectGroupService projectGroupService;
 
 	Mentor mentor = null;
 	
 	public AppointmentController() {
 		this.mentorService = new MentorServiceImpl();
 		this.appointmentService = new AppointmentServiceImpl();
+		this.projectGroupService = new ProjectGroupServiceImpl();
 		session = CustomSession.getInstance();
 	}
 
@@ -73,10 +81,34 @@ public class AppointmentController {
 		
 		groupTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 	        if (newSelection != null) {
-	            String status = newSelection.getStatus();
-	            btnFinished.setDisable(!"APPROVED".equals(status));
+	            String appointmentStatus = newSelection.getStatus();
+	            txtInitMessage.setVisible(false);
+	            
+	            switch (appointmentStatus) {
+	                case "AWAIT_APPROVAL":
+	                    btnApprove.setVisible(true);
+	                    btnApprove.setDisable(false);
+	                    btnDeny.setVisible(true);
+	                    btnDeny.setDisable(false);
+	                    btnFinish.setVisible(false);
+	                    break;
+	                
+	                case "APPROVED":
+	                    btnApprove.setVisible(false);
+	                    btnDeny.setVisible(false);
+	                    btnFinish.setVisible(true);
+	                    btnFinish.setDisable(false);
+	                    break;
+	                
+	                default:
+	                    break;
+	            }
 	        } else {
-	            btnFinished.setDisable(true);
+	            txtInitMessage.setText("Chọn một Appointment");
+	            txtInitMessage.setVisible(true);
+	            btnApprove.setVisible(false);
+	            btnDeny.setVisible(false);
+	            btnFinish.setVisible(false);
 	        }
 	    });
 
@@ -91,7 +123,7 @@ public class AppointmentController {
 	}
 
 	@FXML
-	public void handleApproved() {
+	public void handleApprove() {
 		try {
 			Appointment selectedAppointment = groupTable.getSelectionModel().getSelectedItem();
 			selectedAppointment.setStatus("APPROVED");
@@ -105,7 +137,7 @@ public class AppointmentController {
 	}
 
 	@FXML
-	public void handleDenied() {
+	public void handleDeny() {
 		try {
 			Appointment selectedAppointment = groupTable.getSelectionModel().getSelectedItem();
 			selectedAppointment.setStatus("DENIED");
@@ -118,11 +150,17 @@ public class AppointmentController {
 	}
 
 	@FXML
-	public void handleFinished() {
+	public void handleFinish() {
 		try {
 			Appointment selectedAppointment = groupTable.getSelectionModel().getSelectedItem();
 			if (selectedAppointment.getStatus().equals("APPROVED")) {
 				selectedAppointment.setStatus("FINISHED");
+				ProjectGroup projectGroup = selectedAppointment.getProjectGroup();
+				projectGroup.setWalletPoints(projectGroup.getWalletPoints()-selectedAppointment.getFee());
+				projectGroupService.update(projectGroup);
+				
+				
+				
 				appointmentService.update(selectedAppointment);
 				AlertController.showAlert(Alert.AlertType.CONFIRMATION, "FINISHED successful!", "Finished appointment with id " + selectedAppointment.getAppointmentID());
 			} else {

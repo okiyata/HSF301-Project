@@ -49,4 +49,14 @@ public class AppointmentServiceImpl implements AppointmentService {
 		return repo.getAppointmentsByGroupId(groupId);
 	}
 
+	@Override
+	public List<Appointment> findFinishedAppointmentsWithoutGroupRating(int groupId) {
+		return repo.findFinishedAppointmentsWithoutGroupRating(groupId);
+	}
+
+	@Override
+	public List<Appointment> findFinishedAppointmentsWithoutMentorRating(int mentorId) {
+		return repo.findFinishedAppointmentsWithoutMentorRating(mentorId);
+	}
+
 }
