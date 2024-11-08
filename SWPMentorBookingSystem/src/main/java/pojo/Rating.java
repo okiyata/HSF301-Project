@@ -72,6 +72,10 @@ public class Rating {
 		this.appointment = appointment;
 	}
 
+	public int getAppointmentID() {
+		return appointment != null ? appointment.getAppointmentID() : null;
+	}
+
 	@Override
 	public String toString() {
 		return "Rating [ratingID=" + ratingID + ", rating=" + rating + ", feedback=" + feedback + ", ratingType="
