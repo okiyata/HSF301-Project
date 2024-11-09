@@ -28,11 +28,11 @@
       <Label layoutX="111.0" layoutY="187.0" text="Name:" />
       <TextField fx:id="txtName" layoutX="176.0" layoutY="183.0" prefHeight="23.0" prefWidth="150.0" />
       <Label layoutX="366.0" layoutY="140.0" text="Skills:" />
-      <TextField fx:id="txtSkills" layoutX="441.0" layoutY="183.0" />
+      <TextField fx:id="txtSkills" layoutX="441.0" layoutY="139.0" />
       <Label layoutX="366.0" layoutY="96.0" text="Availability:" />
-      <TextField fx:id="txtAvailability" layoutX="441.0" layoutY="136.0" />
+      <TextField fx:id="txtAvailability" layoutX="441.0" layoutY="92.0" />
       <Label layoutX="362.0" layoutY="187.0" text="BookingFee:" />
-      <TextField fx:id="txtBookingFee" layoutX="441.0" layoutY="92.0" />
+      <TextField fx:id="txtBookingFee" layoutX="441.0" layoutY="183.0" />
       <Button layoutX="285.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleCreate" prefHeight="34.0" prefWidth="129.0" styleClass="crud-button" text="Create">
          <font>
             <Font size="14.0" />
